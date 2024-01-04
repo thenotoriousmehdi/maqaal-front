@@ -1,10 +1,16 @@
 import React from 'react'
-import { useState , useEffect } from 'react';
+import { useState , useEffect , useRef } from 'react';
 import { NavLink , Link } from 'react-router-dom';
 import Logonav from '../assets/logonav.png'
+import { CgProfile } from "react-icons/cg";
+import { FaBookmark } from 'react-icons/fa';
 import { MdOutlineMenu } from "react-icons/md";
 import { IoCloseSharp } from "react-icons/io5";
+
 const navbar = () => {
+
+  
+
   const [isOpen, setIsOpen] = useState(false);
  
 
@@ -93,12 +99,21 @@ const navbar = () => {
        
    
     
-         <div className=' flex  items-center gap-7  mr-6 '>
-         <button type='submit' className=' hidden md:block'>se connecter </button>
+         <div className=' flex   items-center gap-7  mr-6 '>
+
+    {/* when user is connected  */}
+      <Link to="/ArticlesSauvgardes" >
+       <button className='p-4 border sm:block hidden border-primary  rounded-tl-3xl rounded-b-3xl transform transition-transform duration-200 ease-in-out hover:scale-110'> <FaBookmark className='text-primary w-4 h-4 sm:h-7 sm:w-7 '/></button>
+      </Link>
+       <button className='p-4 border border-primary sm:block hidden  rounded-tl-3xl rounded-b-3xl transform transition-transform duration-200 ease-in-out hover:scale-110'> <CgProfile  className='text-primary w-4 h-4 sm:h-7 sm:w-7'/> </button>
+     {/* when user is not connected  */}
+
+         {/* <button type='submit' className=' hidden md:block'>se connecter </button>
          <button type='submit' className=' hidden md:block items-center m-3 px-8 lg:px-14   pb-2 lg:py-7 bg-primary rounded-tl-3xl rounded-b-3xl   lg:font-medium  h-16 lg:h-20 text-white  hover:bg-red-400
           lg:text-2xl text-lg transform transition-transform duration-200 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-rose-700 focus:ring-opacity-75 '>s'inscrire</button>
-         
+           */}
         <button className='xl:hidden' onClick={toggleNavbar}> {isOpen ?  <IoCloseSharp /> :<MdOutlineMenu />}</button>
+      
         </div>
         
            </div>

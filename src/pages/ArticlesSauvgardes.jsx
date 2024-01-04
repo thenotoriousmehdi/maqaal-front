@@ -8,24 +8,25 @@ import {  useState , useEffect} from "react";
 import ReactPaginate from 'react-paginate';
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { IoIosArrowRoundForward } from "react-icons/io";
-const Articles = () => {
-
+const ArticlesSauvgardes = () => {
+ const ifSaved = true 
 
   const articles = [
   
-    {id: '1' , title : 'FrontEnd dev with react js '           , name : 'SAADAOUI KAHINA' ,  ifSaved : false}, 
-    {id: '2' , title : 'La différence entre le UI et le UX   ' , name : 'MAMOUNI MEHDI '  ,  ifSaved : false}, 
-    {id: '3' , title : 'La différence entre le UI et le UX   ' , name : 'BELDJOUDI WASSIM',  ifSaved : false}, 
-    {id: '4' , title : 'FastApi: the best python framewrok   ' , name : 'MAMOUNI MEHDI '  ,  ifSaved : false}, 
-    {id: '5' , title : 'FrontEnd dev with react js '           , name : 'SAADAOUI KAHINA' ,  ifSaved : false}, 
-    {id: '6' , title : 'La différence entre le UI et le UX   ' , name : 'MAMOUNI MEHDI '  ,  ifSaved : false}, 
-    {id: '7' , title : 'La différence entre le UI et le UX   ' , name : 'BELDJOUDI WASSIM',  ifSaved : false}, 
-    {id: '8' , title : 'FastApi: the best python framewrok   ' , name : 'MAMOUNI MEHDI '  ,  ifSaved : false}, 
-    {id: '9' , title : 'FrontEnd dev with react js '           , name : 'SAADAOUI KAHINA' ,  ifSaved : false}, 
-    {id: '10', title : 'La différence entre le UI et le UX   ' , name : 'MAMOUNI MEHDI '  ,  ifSaved : false}, 
-    {id: '11', title : 'La différence entre le UI et le UX   ' , name : 'BELDJOUDI WASSIM',  ifSaved : false}, 
-    {id: '12', title : 'FastApi: the best python framewrok   ' , name : 'MAMOUNI MEHDI '  ,  ifSaved : false}, 
+    {id: '1' , title : 'FrontEnd dev with react js '           , name : 'SAADAOUI KAHINA' ,  ifSaved : true}, 
+    {id: '2' , title : 'La différence entre le UI et le UX   ' , name : 'MAMOUNI MEHDI '  ,  ifSaved : true}, 
+    {id: '3' , title : 'La différence entre le UI et le UX   ' , name : 'BELDJOUDI WASSIM',  ifSaved : true}, 
+    {id: '4' , title : 'FastApi: the best python framewrok   ' , name : 'MAMOUNI MEHDI '  ,  ifSaved : true}, 
+    {id: '5' , title : 'FrontEnd dev with react js '           , name : 'SAADAOUI KAHINA' ,  ifSaved : true}, 
+    {id: '6' , title : 'La différence entre le UI et le UX   ' , name : 'MAMOUNI MEHDI '  ,  ifSaved : true}, 
+    {id: '7' , title : 'La différence entre le UI et le UX   ' , name : 'BELDJOUDI WASSIM',  ifSaved : true}, 
+    {id: '8' , title : 'FastApi: the best python framewrok   ' , name : 'MAMOUNI MEHDI '  ,  ifSaved : true}, 
+    {id: '9' , title : 'FrontEnd dev with react js '           , name : 'SAADAOUI KAHINA' ,  ifSaved : true}, 
+    {id: '10', title : 'La différence entre le UI et le UX   ' , name : 'MAMOUNI MEHDI '  ,  ifSaved : true}, 
+    {id: '11', title : 'La différence entre le UI et le UX   ' , name : 'BELDJOUDI WASSIM',  ifSaved : true}, 
+    {id: '12', title : 'FastApi: the best python framewrok   ' , name : 'MAMOUNI MEHDI '  ,  ifSaved : true}, 
   ] 
+
 
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
@@ -47,11 +48,11 @@ const Articles = () => {
       
   return (
     <>
-    <div className='flex   xl:gap-10    gap-[10%]   items-center '>
-         <button class="  border border-primary rounded-tl-3xl rounded-b-3xl lg:mx-28 mx-6  p-3  hover:bg-slate-700 text-white font-bold   transform transition-transform duration-200 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-opacity-75">
+    <div className='flex  xl:w-8/12 xl:justify-between xl:gap-10    gap-[10%]   items-center '>
+         <button class="  border border-primary rounded-tl-3xl rounded-b-3xl lg:ml-28 ml-6  p-3  hover:bg-slate-700 text-white font-bold   transform transition-transform duration-200 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-opacity-75">
          <AiOutlineArrowLeft  className='text-primary md:w-8 md:h-8  h-5 w-5 hover:text-white'/>
          </button>
-        <h1 className='font-title  font-extrabold my-14 text-3xl md:text-6xl text-primary text-center'> TOUT </h1>
+        <h1 className='font-title  font-extrabold my-14 text-3xl md:text-6xl text-primary text-center'> Articles <span className=' text-rosee '>sauvgardés</span></h1>
     
     </div>
 
@@ -62,10 +63,13 @@ const Articles = () => {
 
     {/* mapping the articles cards------------------------------------------ */}
 
-    <div className=" flex flex-wrap  overflow-hidden justify-center">
+    <div className=" flex flex-wrap  justify-center">
       {subset.map((article) => (
         <div className="mx-20 my-2" key={article.id}>
-          <ArticleCard article={article} key={article.id} />
+
+          
+          <ArticleCard article={article} key={article.id}  ifSaved={ifSaved}/>
+ 
         </div>
       ))}
     </div>
@@ -97,4 +101,4 @@ const Articles = () => {
   )
 }
 
-export default Articles
+export default ArticlesSauvgardes

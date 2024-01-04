@@ -10,9 +10,10 @@ import Faq from './pages/Faq';
 import Notreequipe from './pages/Notreequipe';
 
 import Headroom from 'react-headroom/src';
+import ArticleDetails from './pages/ArticleDetails';
+import ArticlesSauvgardes from './pages/ArticlesSauvgardes'
 function App() {
-  
-
+ 
   return (
    
  <>
@@ -21,9 +22,11 @@ function App() {
    <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Apropos" element={ <Apropospage />} />
-        <Route path="/Articles" element={<Articles />} />
+        <Route path="/Articles" element={<Articles/>} />
+        <Route path="/ArticlesSauvgardes" element={<ArticlesSauvgardes  />} />
         <Route path="/Faq" element={<Faq />} />
         <Route path="/Notreequipe" element={<Notreequipe />} />
+        <Route path="/articles/:id" element={<ArticleDetails />} />
   </Routes> 
 
   <Footer /> 

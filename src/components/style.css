@@ -6,4 +6,7 @@
     height: 100%;
     object-fit: cover;
   }
+  .swiper-slide{
+    margin-right: 40px !important;
+  }
   

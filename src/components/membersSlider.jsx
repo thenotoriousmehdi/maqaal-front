@@ -12,7 +12,6 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import "swiper/css/navigation";
 
-import './style.css';
 
 // import required modules
 import { FreeMode , Navigation} from 'swiper/modules';
@@ -80,24 +79,24 @@ où la créativité est la priorité </p>
        
         freeMode={true}
        slidesPerView={1}
-       spaceBetween={60}
+       spaceBetween={35}
         breakpoints={{
           880: {
             slidesPerView: 2,
-            spaceBetween: 60,
+            spaceBetween: 30,
           },
           1460: {
             slidesPerView: 3,
-            spaceBetween: 60,
+            spaceBetween: 30,
           },
         }}
         navigation={true}
        
         modules={[FreeMode , Navigation]}
-        className="  w-4/5 z-0  m-10 p-10   "
+        className="  w-full sm:w-4/5 z-0  sm:m-10 p-10   "
       >
          {members.map((props) => (        
-        <SwiperSlide className=' h-[560px]  z-0  my-4   transform transition-transform duration-200 ease-in-out hover:scale-105  font-title text-primary  shadow-md shadow-slate-400  text-2xl rounded-tl-3xl rounded-b-3xl flex flex-col items-center   border-slate-600  gap-8 '>
+        <SwiperSlide className='  sm:h-[560px]  z-0  my-4   transform transition-transform duration-200 ease-in-out hover:scale-105  font-title text-primary  shadow-md shadow-slate-400  text-2xl rounded-tl-3xl rounded-b-3xl flex flex-col items-center   border-slate-600  gap-8 '>
         <div className="h-[125px] w-[125px] md:h-[160px] md:w-[160px] rounded-[50%] md:mt-[60px] mt-[30px] bg-white flex flex-row justify-center items-center border-[3.5px] md:border-[4px] border-l-rosee border-b-rosee border-r-white border-t-white">
         <div className="  h-[110px] w-[110px] md:h-[140px] md:w-[140px] rounded-[50%]">
             <img src={props.img} className="w-[100%] h-[100%] rounded-[50%] object-cover"></img>
@@ -128,7 +127,7 @@ où la créativité est la priorité </p>
             <a href={props.linkedin}><div className=" w-[30px] h-[30px] md:w-[35px] md:h-[35px]">
                
             <svg 
-            className=" fill-rawdablack"
+            className=" fill-black"
             viewBox="0 0 512 512">
       <path d="M186.4 142.4c0 19-15.3 34.5-34.2 34.5 -18.9 0-34.2-15.4-34.2-34.5 0-19 15.3-34.5 34.2-34.5C171.1 107.9 186.4 123.4 186.4 142.4zM181.4 201.3h-57.8V388.1h57.8V201.3zM273.8 201.3h-55.4V388.1h55.4c0 0 0-69.3 0-98 0-26.3 12.1-41.9 35.2-41.9 21.3 0 31.5 15 31.5 41.9 0 26.9 0 98 0 98h57.5c0 0 0-68.2 0-118.3 0-50-28.3-74.2-68-74.2 -39.6 0-56.3 30.9-56.3 30.9v-25.2H273.8z"/>
     </svg>

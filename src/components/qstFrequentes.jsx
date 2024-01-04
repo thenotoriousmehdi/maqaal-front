@@ -7,7 +7,7 @@ import * as Accordion from '@radix-ui/react-accordion';
 import classNames from 'classnames';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -24,8 +24,12 @@ const qstFrequentes = () => {
  
   const FaqItems = [
 
-    {title : 'question 1 ' , desc : ' answer 1 '} , 
-    {title : 'question 2 ' , desc : ' answer 2 '}, 
+    {title : 'question 1 ' , desc : ' answer 1 ' , id:1}, 
+    {title : 'question 2 ' , desc : ' answer 2 ' , id:2}, 
+    {title : 'question 3 ' , desc : ' answer 1 ' , id:3}, 
+    {title : 'question 4 ' , desc : ' answer 2 ' , id:4}, 
+    {title : 'question 5 ' , desc : ' answer 2 ' , id:5}, 
+    
     
   ];
 
@@ -38,42 +42,19 @@ const qstFrequentes = () => {
 
 
             <Accordion.Root className="    w-11/12  md:w-7/12 flex flex-col items-center  " type="single" defaultValue="item-1" collapsible>
-                <Accordion.Item className="AccordionItem w-full " value="item-1">
-                  <AccordionTrigger className=" my-4 bg-primary w-full      h-16  rounded-b-3xl rounded-tl-3xl text-xl font-body  text-white font-semibold">Is it accessible?</AccordionTrigger>
-                  <AccordionContent className=' w-full  pl-5 text-xl font-body  text-primary font-semibold '>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
-                </Accordion.Item>
+               
+                {FaqItems.map((item) => (
+                      <Accordion.Item className="AccordionItem w-full "  value={item.id}>
+                      <AccordionTrigger className=" my-4 bg-primary w-full      h-16  rounded-b-3xl rounded-tl-3xl text-xl font-body  text-white font-semibold">{item.title}</AccordionTrigger>
+                      <AccordionContent className=' w-full  pl-5 text-xl font-body  text-primary font-semibold '>{item.desc}</AccordionContent>
+                    </Accordion.Item>
+                  ))}
+             
+            </Accordion.Root>
 
-                <Accordion.Item className="AccordionItem w-full " value="item-2">
-                  <AccordionTrigger className=" w-full   my-4 bg-primary  h-16  rounded-b-3xl rounded-tl-3xl text-xl font-body  text-white font-semibold" >Is it unstyled?</AccordionTrigger>
-                  <AccordionContent  className=' w-full  pl-5   text-xl font-body  text-primary font-semibold '>
-                    Yes. It's unstyled by default, giving you freedom over the look and feel.
-                  </AccordionContent>
-                </Accordion.Item>
-
-                <Accordion.Item className="AccordionItem w-full " value="item-3">
-                  <AccordionTrigger className=" w-full my-4 bg-primary  h-16  rounded-b-3xl rounded-tl-3xl text-xl font-body  text-white font-semibold">Can it be animated?</AccordionTrigger>
-                  <Accordion.Content  className=' w-full   pl-5  text-xl font-body  text-primary font-semibold AccordionContent'>
-                    <div className="AccordionContentText">
-                      Yes! You can animate the Accordion with CSS or JavaScript.
-                    </div>
-                  </Accordion.Content>
-                </Accordion.Item>
-
-                <Accordion.Item className="AccordionItem w-full " value="item-4">
-                  <AccordionTrigger className=" w-full   my-4 bg-primary  h-16  rounded-b-3xl rounded-tl-3xl text-xl font-body  text-white font-semibold" >Is it unstyled?</AccordionTrigger>
-                  <AccordionContent  className=' w-full  pl-5   text-xl font-body  text-primary font-semibold '>
-                    Yes. It's unstyled by default, giving you freedom over the look and feel.
-                  </AccordionContent>
-                </Accordion.Item>
-
-                <Accordion.Item className="AccordionItem w-full " value="item-5">
-                  <AccordionTrigger className=" w-full   my-4 bg-primary  h-16  rounded-b-3xl rounded-tl-3xl text-xl font-body  text-white font-semibold" >Is it unstyled?</AccordionTrigger>
-                  <AccordionContent  className=' w-full  pl-5   text-xl font-body  text-primary font-semibold '>
-                    Yes. It's unstyled by default, giving you freedom over the look and feel.
-                  </AccordionContent>
-                </Accordion.Item>
-              </Accordion.Root>
-  
+              <Link to="/Faq" >
+                 <button className='font-body my-5 text-left text-2xl text-rosee font-bold hover:opacity-75 '>Voir plus </button>
+              </Link>
         </div>
      
       <div className='relative  right-0 left-auto hidden lg:block  pb-3'> <img src={DOTSgrid} alt="dots grid " /> </div>

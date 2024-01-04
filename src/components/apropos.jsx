@@ -3,6 +3,7 @@ import Frame1 from '../assets/Frame1.png'
 import Frame2 from '../assets/Frame2.png'
 import DOTS3 from '../assets/DOTS3.png'
 import FadeIn from "./FadeIn"
+import { Link } from 'react-router-dom'
 const apropos = () => {
   return (
     <>
@@ -35,9 +36,11 @@ const apropos = () => {
           plus profonde du monde.</p>
       </FadeIn>
       <FadeIn delay={0.4} direction="left" >
+        <Link to="/Articles">
      <button type="submit" className=' m-3 px-8 md:px-20   pb-2 md:py-7 bg-rosee rounded-tl-3xl rounded-b-3xl   font-normal md:font-medium  h-16 md:h-20 text-white  hover:bg-red-400
      font-body md:text-2xl text-lg transform transition-transform duration-200 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-rose-700 focus:ring-opacity-75 '> Découvrir </button>
-     </FadeIn>
+      </Link>
+      </FadeIn>
 
      <FadeIn delay={0.2} direction="up" >
      <div className='flex font-body text-primary  justify-around mb-20 mt-12 lg:my-5 ' >

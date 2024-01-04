@@ -5,7 +5,7 @@ import Apropos from '../components/apropos'
 import MembersSlider from '../components/membersSlider'
 import QstFrequentes from '../components/qstFrequentes'
 
-export const Home = () => {
+export const Home = () =>  {
   return (
     <div>
     <HeroSection />

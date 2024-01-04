@@ -12,7 +12,7 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 
-
+import './style.css'
 import 'swiper/swiper-bundle.css';
 
 // import required modules
@@ -38,41 +38,35 @@ const artclsTendance = () => {
     {id: '4' , title : 'FastApi: the best python framewrok   ' , name : 'MAMOUNI MEHDI '}, 
   ]
   return (
-    <div   className="xl:p-20 p-4   mb-20 ">
+    <div   className="xl:p-20 sm:p-4   mb-20 ">
       <FadeIn delay={0.2} direction="down" >
-      <h1 className='font-title  font-extrabold  m-20 text-6xl text-primary text-center'> Articles <span className=' text-rosee '>Tendance</span></h1>
+      <h1 className='font-title  font-extrabold  my-20 md:text-5xl text-3xl lg:text-6xl text-primary text-center'> Articles <span className=' text-rosee '>Tendance</span></h1>
    </FadeIn>
       <Swiper
         freeMode={true}
         slidesPerView={1}
-        spaceBetween={60}
+        spaceBetween={30}
          breakpoints={{
-           768: {
+           879: {
              slidesPerView: 2,
-             spaceBetween: 60,
+             spaceBetween: 30,
            },
-           1460: {
+           1619: {
              slidesPerView: 3,
-             spaceBetween: 60,
+             spaceBetween: 30,
            },
          }}
          navigation={true}
         
          modules={[FreeMode , Navigation]}
-     className=" p-10  z-0  "
+     className="p-4 sm:p-8 z-0  "
        
       >         
         
-        {/* {articles.map((article) => (        
-
-             <SwiperSlide key={article.id} >
-            <ArticleCard article={article} />
-        </SwiperSlide>
-        ))} */}
   
       {articles.map((article) => (        
-        <SwiperSlide key={article.id} >
-            <div className=' h-[560px]  z-0  m-4 md:w-[320px]   lg:w-[410px]  transform transition-transform duration-200 ease-in-out hover:scale-105 font-body text-primary  shadow-md shadow-slate-400 text-xl lg:text-2xl rounded-tl-3xl rounded-b-3xl flex flex-col items-start    bg-primary bg-opacity-7'>
+        <SwiperSlide key={article.id} className=' mr-8' >
+            {/* <div className=' h-[560px]  z-0  m-4 md:w-[320px]   lg:w-[410px]  transform transition-transform duration-200 ease-in-out hover:scale-105 font-body text-primary  shadow-md shadow-slate-400 text-xl lg:text-2xl rounded-tl-3xl rounded-b-3xl flex flex-col items-start    bg-primary bg-opacity-7'>
 
               <div className=' h-80 w-full'> <img src={Artclimg} alt="articl image"  className='  mb-2   '/>    </div>
 
@@ -82,9 +76,9 @@ const artclsTendance = () => {
               <FaRegBookmark   className={`productCard__wishlist  absolute bottom-7 right-6 ${ isWishlisted ? ' hidden' : ''}`    }  onClick={toggleWishlist}/>
               <FaBookmark   className={`productCard__wishlist  absolute bottom-7 right-6  ${ isWishlisted ? '  text-rosee' : 'hidden'}`    }  onClick={toggleWishlist}/>
 
-           </div>
+           </div> */}
 
-
+           <ArticleCard article={article} />
 
         </SwiperSlide>
         ))} 
