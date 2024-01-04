@@ -1,8 +1,10 @@
 import React from 'react'
-
+import Apropos from '../components/apropos'
 const Apropspage = () => {
   return (
-    <div>Apropspage</div>
+    <div>
+      <Apropos/>
+    </div>
   )
 }
 
