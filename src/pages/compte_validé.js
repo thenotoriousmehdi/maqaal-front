@@ -1,7 +1,7 @@
 import React from 'react'
-import pic from '../Assests/pic1.jpg'
-import pic2 from '../Assests/pic2.png'
-import pic3 from '../Assests/sticker.png'
+import pic from '../assests/pic1.jpg'
+import pic2 from '../assests/pic2.png'
+import pic3 from '../assests/sticker.png'
 
 const Compte_validé  = () => {
   
