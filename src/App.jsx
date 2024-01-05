@@ -13,6 +13,10 @@ import Headroom from 'react-headroom/src';
 import ArticleDetails from './pages/ArticleDetails';
 import ArticlesSauvgardes from './pages/ArticlesSauvgardes'
 import { Moderateur } from './pages/Moderateur';
+import Log_in from './pages/Log_in';
+import Sign_in from './pages/sign_in'
+import CompteValide from './pages/CompteValide';
+import Confirmer_mdp from './pages/confirmer_mdp';
 
 function App() {
  
@@ -32,6 +36,12 @@ function App() {
         <Route path="/Notreequipe" element={<Notreequipe />} />
         <Route path="/articles/:id" element={<ArticleDetails />} />
         <Route path="/Adminpage/Moderateur:id" element={<ModifyModerateur />} />
+        <Route path="/LogIn" element={<Log_in/> }/>
+        <Route path="/SignIn" element={<Sign_in/> }/>
+        <Route to={"/SignIn/Verification"}  element={<Confirmer_mdp/> }  />
+        <Route to={"/SignIn/Verification/Confirmation"}  element={<CompteValide/> }  />
+        
+
         
   </Routes> 
 

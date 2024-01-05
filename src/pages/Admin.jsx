@@ -48,7 +48,7 @@ export const Admin = () => {
          
        
        setOpen(false);
-        setMdperror(false)
+       setMdperror(false)
        setEmail("")
        setPassword("")
         
