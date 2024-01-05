@@ -1,7 +1,7 @@
 import React, { useState , useEffect , useRef } from 'react'
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { FaRegFilePdf } from "react-icons/fa";
-
+import { Link } from 'react-router-dom';
 const ArticleDetails = () => {
 
    const elementRef = useRef(null);
@@ -11,7 +11,7 @@ const ArticleDetails = () => {
   useEffect(() => {
     function handleResize() {
     
-      const y = elementRef.current.offsetTop;
+      const y =  elementRef.current.offsetTop  ;
       setPosition( y );
     }
 
@@ -27,17 +27,17 @@ const ArticleDetails = () => {
   const [show, setShow] = useState(false); //indicates that we clicked on the show more button 
 
   const handleShowmore =()=>{
+    setShow(true) 
     setMoreposition( window.scrollY );
     setInitHeight(InitHeight*2)
-    setShow(true) 
-    setAfterposition(false)
+    
     
   }
 
   const handleShowless =()=>{
    setInitHeight(33)
-  setShow(false)
-  setAfterposition(false)
+   setShow(false)
+   setAfterposition(false)
 
  
 }
@@ -46,25 +46,23 @@ const ArticleDetails = () => {
     window.addEventListener("scroll", () => {
       if (window.scrollY < moreposition) {
         handleShowless()
-        setAfterposition(false)
       } 
-      else if (window.scrollY > position){
+      else if (window.scrollY > (position ) ){
         setAfterposition(true)
 
-      }else{setAfterposition(false)}
+      }
     } );
 
     return () => {
       window.removeEventListener("scroll", () => {
         if (window.scrollY < moreposition) {
           handleShowless()
-          setAfterposition(false)
         } 
-        else if (window.scrollY > position){
+        else if (window.scrollY > (position ) ){
           setAfterposition(true)
   
-        }else{setAfterposition(false)}
-      } );
+        }
+      } );  
     }
     
   }, []);
@@ -75,10 +73,11 @@ const ArticleDetails = () => {
   return (
     
     < div className=' bg-bgr'>
+      <Link to="/Articles">
     <button class="  border border-primary hover:text-white my-10 rounded-tl-3xl rounded-b-3xl lg:ml-40 ml-12  p-3  hover:bg-slate-700 text-white font-bold   transform transition-transform duration-200 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-opacity-75">
     <AiOutlineArrowLeft  className='text-primary md:w-8 md:h-8  h-5 w-5 hover:text-white'/>
     </button>
-
+     </Link>
    <h1 className='font-title font-black text-primary text-4xl sm:text-5xl md:text-6xl  my-9 mx-6 sm:mx-20  xl:mx-44'> Python comme langage scientifique</h1>
 
     <div className='mx-6 sm:mx-20  xl:mx-44  mb-20 flex md:flex-row flex-col justify-between items-start '>
@@ -143,7 +142,7 @@ const ArticleDetails = () => {
 
     <div className='  text-center'>
    
-        <p className={InitHeight=== 33? 'mx-6  sh sm:mx-20 xl:mx-44 font-body  text-2xl text-primary   font-medium max-h-[33rem]  overflow-hidden  ':  'mx-6 sm:mx-20 xl:mx-44 font-body  text-2xl text-primary   font-medium   '  }  >
+        <p ref={elementRef} className={InitHeight=== 33? 'mx-6  sh sm:mx-20 xl:mx-44 font-body  text-2xl text-primary   font-medium max-h-[33rem]  overflow-hidden  ':  'mx-6 sm:mx-20 xl:mx-44 font-body  text-2xl text-primary   font-medium   '  }  >
             de nombreuses solutions géométriques ou des matériaux différents de manière relativement pratique, 
             plutôt que de construire de nombreuses maquettes à grand coût. L'informatique scientifique a pour 
             but premier de faciliter cette exploration du problème. Ses outils, que le scientifique doit apprendre et 
@@ -198,7 +197,7 @@ const ArticleDetails = () => {
             ons utilisées soient aussi souples et agiles que possible.
         </p>
 
-        <button ref={elementRef} className='h-5 w-full text-center'>-</button>
+        
       {InitHeight ===33 ?
       <> 
       <div className='  inset-x-0 bottom-0 h-11 -top-10 relative bg-gradient-to-t from-gray-300 to-transparent    black  mx-6 sm:mx-20 xl:mx-44'>

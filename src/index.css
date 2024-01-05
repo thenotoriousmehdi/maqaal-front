@@ -33,7 +33,20 @@
   }
   
 
-  
+  .MuiButtonBase-root{
+    border-radius: 40px !important;
+     color: black !important;
+  }
+   .MuiButton-root{
+    border-radius: 40px !important;
+   
+       } 
+       .MuiChip-root{
+         background-color: #F5F5DC !important;
+       }
+   .MuiTouchRipple-root {
+    border-radius: 40px !important;
+   }
   @keyframes slideDown {
     from {
       height: 0;

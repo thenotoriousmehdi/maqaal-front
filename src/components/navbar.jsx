@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState , useEffect , useRef } from 'react';
-import { NavLink , Link } from 'react-router-dom';
+import { NavLink , Link, useLocation } from 'react-router-dom';
 import Logonav from '../assets/logonav.png'
 import { CgProfile } from "react-icons/cg";
 import { FaBookmark } from 'react-icons/fa';
@@ -13,6 +13,7 @@ const navbar = () => {
 
   const [isOpen, setIsOpen] = useState(false);
  
+
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
@@ -102,10 +103,14 @@ const navbar = () => {
          <div className=' flex   items-center gap-7  mr-6 '>
 
     {/* when user is connected  */}
-      <Link to="/ArticlesSauvgardes" >
-       <button className='p-4 border sm:block hidden border-primary  rounded-tl-3xl rounded-b-3xl transform transition-transform duration-200 ease-in-out hover:scale-110'> <FaBookmark className='text-primary w-4 h-4 sm:h-7 sm:w-7 '/></button>
+      <Link to="/ArticlesSauvgardes"  >
+       <button   className='p-4 border sm:block hidden border-primary  rounded-tl-3xl rounded-b-3xl transform transition-transform duration-200 ease-in-out hover:scale-110'> <FaBookmark className='text-primary w-4 h-4 sm:h-7 sm:w-7 '/></button>
       </Link>
+     <Link to="/Adminpage">   
+     {/* when role is moderateur path is to="/Moderateurpage" */}
        <button className='p-4 border border-primary sm:block hidden  rounded-tl-3xl rounded-b-3xl transform transition-transform duration-200 ease-in-out hover:scale-110'> <CgProfile  className='text-primary w-4 h-4 sm:h-7 sm:w-7'/> </button>
+    </Link> 
+    
      {/* when user is not connected  */}
 
          {/* <button type='submit' className=' hidden md:block'>se connecter </button>

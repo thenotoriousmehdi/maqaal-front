@@ -27,6 +27,7 @@ export default {
       'current': 'currentColor',
       'primary' : '#2E4165', 
       'rosee' : '#FF6F61', 
+      'beige' : '#F5F5DC',
       'bgr' : '#FAFBFD'
 
     },
@@ -44,4 +45,3 @@ export default {
   },
   plugins: [],
 }
-

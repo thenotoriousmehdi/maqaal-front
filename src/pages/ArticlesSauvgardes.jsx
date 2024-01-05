@@ -4,13 +4,12 @@ import ArticleCard from '../components/articleCard'
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import {  useState , useEffect} from "react";
 
-
 import ReactPaginate from 'react-paginate';
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { IoIosArrowRoundForward } from "react-icons/io";
 const ArticlesSauvgardes = () => {
  const ifSaved = true 
-
+ 
   const articles = [
   
     {id: '1' , title : 'FrontEnd dev with react js '           , name : 'SAADAOUI KAHINA' ,  ifSaved : true}, 
@@ -49,7 +48,7 @@ const ArticlesSauvgardes = () => {
   return (
     <>
     <div className='flex  xl:w-8/12 xl:justify-between xl:gap-10    gap-[10%]   items-center '>
-         <button class="  border border-primary rounded-tl-3xl rounded-b-3xl lg:ml-28 ml-6  p-3  hover:bg-slate-700 text-white font-bold   transform transition-transform duration-200 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-opacity-75">
+         <button className="  border border-primary rounded-tl-3xl rounded-b-3xl lg:ml-28 ml-6  p-3  hover:bg-slate-700 text-white font-bold   transform transition-transform duration-200 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-opacity-75">
          <AiOutlineArrowLeft  className='text-primary md:w-8 md:h-8  h-5 w-5 hover:text-white'/>
          </button>
         <h1 className='font-title  font-extrabold my-14 text-3xl md:text-6xl text-primary text-center'> Articles <span className=' text-rosee '>sauvgardés</span></h1>
