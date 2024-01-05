@@ -1,6 +1,6 @@
 import React , { useState } from 'react'
-import pic2 from '../Assests/pic2.png'
-import pic from '../Assests/pic1.jpg'
+import pic2 from '../assests/pic2.png'
+import pic from '../assests/pic1.jpg'
 
 
 function Sign_in() {
