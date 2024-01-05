@@ -1,6 +1,6 @@
 import React , { useState}from 'react'
-import pic2 from '../Assests/pic2.png'
-import pic from '../Assests/pic1.jpg'
+import pic2 from '../assets/pic2.png'
+import pic from '../assets/pic1.jpg'
 function Confirmer_mdp() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
