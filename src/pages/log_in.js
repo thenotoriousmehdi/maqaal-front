@@ -1,7 +1,7 @@
 import React , { useState } from 'react'
 import Sign_in from './sign_in';
-import pic2 from '../Assests/pic2.png'
-import pic from '../Assests/pic1.jpg'
+import pic2 from '../assets/pic2.png'
+import pic from '../assets/pic1.jpg'
 import { useNavigate  } from 'react-router-dom';
 
 const Log_in = (Props) => {
