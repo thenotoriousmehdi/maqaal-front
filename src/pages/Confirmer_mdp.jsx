@@ -6,6 +6,7 @@ function Confirmer_mdp() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [errorPassword, setErrorPassword] = useState('');
   
 
   const handlePasswordChange = (event) => {
@@ -19,15 +20,20 @@ function Confirmer_mdp() {
     console.log(password);
     console.log(confirmPassword);
 
-  
-    if (password !== confirmPassword) {
+  if (password !== confirmPassword) {
       setErrorMessage('Les mots de passe ne correspondent pas.');
       
     } else {
-        
-
-      console.log('Connexion réussie !');
+      setErrorMessage('');
     }
+
+    if (!password) {
+      setErrorPassword('Veuillez saisir mot de passe ');
+    } else {
+      setErrorPassword('');
+    
+    }
+    
   };
   return (
     <div className="w-full  flex items-start ">
@@ -75,7 +81,9 @@ function Confirmer_mdp() {
      
      </Link>
      </div>
-     
+     {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+     {errorPassword && <p className="text-red-500">{errorPassword}</p>}
+       
      <div className='flex flex-col mb-8  justify-evenly  gap-4'>
      <div className="w-[397px] h-[0px] opacity-40 border border-slate-700"></div>
     <div className='flex  w-full  justify-between '>
