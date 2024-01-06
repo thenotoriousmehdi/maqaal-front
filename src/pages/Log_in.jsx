@@ -8,7 +8,7 @@ import pic from '../assets/pic1.jpg'
 const Log_in = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-   
+  const [error, setError] = useState('');
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -22,6 +22,14 @@ const Log_in = () => {
     event.preventDefault();
     console.log(email);
     console.log(password);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+      setError('Format d\'e-mail est non valide');
+    } else {
+      setError('');
+      // Envoyer le formulaire ou effectuer d'autres actions
+    }
 
   }
   
@@ -58,7 +66,7 @@ const Log_in = () => {
     className='w-[528px] h-20  text-black text-[18px]   bg-slate-200 rounded-[10px] '
      />
     </div>
-    
+     {error && <p className="text-red-500 font-['SF Pro']">{error}</p>}
        <div className='py-4'>
       <button onClick={handleSubmit}
       type="submit"
