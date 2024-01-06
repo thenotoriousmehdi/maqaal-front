@@ -7,6 +7,7 @@ function Confirmer_mdp() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [errorPassword, setErrorPassword] = useState('');
+  const [errorConfirmedPassword, setErrorConfirmedPassword] = useState('');
   
 
   const handlePasswordChange = (event) => {
@@ -15,26 +16,32 @@ function Confirmer_mdp() {
   const handleConfirmPasswordChange = (event) => {
     setConfirmPassword(event.target.value);
   };
-  const HandleSignInconf =  (event) => {
+ const HandleSignInconf = async (event) => {
     event.preventDefault();
     console.log(password);
     console.log(confirmPassword);
 
-  if (password !== confirmPassword) {
-      setErrorMessage('Les mots de passe ne correspondent pas.');
-      
-    } else {
-      setErrorMessage('');
-    }
-
     if (!password) {
-      setErrorPassword('Veuillez saisir mot de passe ');
+      setErrorPassword('Veuillez saisir votre mot de passe ');
     } else {
       setErrorPassword('');
+      if (!confirmPassword) {
+        setErrorConfirmedPassword('Veuillez confirmer votre mot de passe ');
+      } else {
+        setErrorConfirmedPassword('');
+        if (password !== confirmPassword) {
+          setErrorMessage('Les mots de passe ne correspondent pas ');
+          
+        } else {
+          setErrorMessage('');
+        }
     
+      }
     }
     
+   
   };
+  
   return (
     <div className="w-full  flex items-start ">
     <div className="w-1/2 h-screen flex items-center justify-center">
@@ -81,8 +88,9 @@ function Confirmer_mdp() {
      
      </Link>
      </div>
-     {errorMessage && <p className="text-red-500">{errorMessage}</p>}
      {errorPassword && <p className="text-red-500">{errorPassword}</p>}
+     {errorConfirmedPassword && <p className="text-red-500">{errorConfirmedPassword}</p>}
+     {errorMessage && <p className="text-red-500">{errorMessage}</p>}
        
      <div className='flex flex-col mb-8  justify-evenly  gap-4'>
      <div className="w-[397px] h-[0px] opacity-40 border border-slate-700"></div>
