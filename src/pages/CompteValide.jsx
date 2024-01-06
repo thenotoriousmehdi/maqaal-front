@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom';
 const CompteValide = () => {
   return (
     <div className="w-full min-h-screen flex items-start">
-      <div className="flexbox flex-col w-1/2 h-screen flex items-center justify-center">
+      <div className="flexbox flex-col w-full xl:w-1/2 h-screen flex items-center justify-center">
         <div className="h-12 w-full items-center bg-customBlue opacity-5 p-2 shadow-2xl rounded-full filter blur-md"></div>
-        <div className="flex flex-col w-[726px] h-[901px] items-center justify-evenly bg-white shadow-2xl rounded-2xl">
+        <div className="flex flex-col w-[650px] xl:w-[726px] h-[901px] items-center justify-evenly bg-white shadow-2xl rounded-2xl">
           <img src={pic2} alt="Logo" className="w-15 h-9 mt-2 mb-8 bg-transparent" />
 
           <img
@@ -34,7 +34,7 @@ const CompteValide = () => {
         <div className="h-12 w-full items-center bg-customRed opacity-10 p-4 shadow-2xl rounded-full filter blur-md"></div>
       </div>
 
-      <div className="w-1/2 h-screen flex items-center justify-center">
+      <div className="w-0 xl:w-1/2 h-screen flex items-center justify-center">
         <img src={pic} alt="" className="h-full w-full object-cover" />
       </div>
     </div>
