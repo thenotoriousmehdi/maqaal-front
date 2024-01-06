@@ -5,18 +5,34 @@ import { Link } from 'react-router-dom';
 
 
 function Sign_in() {
-    const [name, setName] = useState('');
+     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [sexe, setSexe] = useState('');
-    const[day, setDay] = useState('');
-    const[month, setMonth] = useState('');
-    const [year, setYear] = useState('');
+    const [sexe, setSexe] = useState('m');
+    const[day, setDay] = useState('1');
+    const[month, setMonth] = useState('Janvier');
+    const [year, setYear] = useState('2024');
+    const [errorEmail, setErrorEmail] = useState('');
+    const [errorName, setErrorName] = useState('');
     
     const handleSubmit = (event) => {
       console.log('Email:', email);
       console.log('Nom complet:', name);
       console.log('Sexe:', sexe);
       console.log('Date de Naissance:', day , month,year);
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailRegex.test(email)) {
+        setErrorEmail('Veillez saisir votre mail correctement');
+      } else {
+        setErrorEmail('');
+        // Envoyer le formulaire ou effectuer d'autres actions
+      }
+      if (!name) {
+        setErrorName('Veuillez saisir votre nom');
+      } else {
+        setErrorName('');
+        // Effectuer d'autres actions, par exemple, envoyer le formulaire
+      }
 
     }
 
@@ -186,6 +202,8 @@ function Sign_in() {
      placeholder='Entrez votre email '
      className='w-[510px] h-20  bg-slate-200 rounded-[10px] text-center text-xl'
      />
+       {errorName && <p className="text-red-500">{errorName}</p>}
+        {errorEmail && <p className="text-red-500">{errorEmail}</p>}
 
        <div className='flex items-center '>
      <Link to={"/SignIn/Verification"}>   
