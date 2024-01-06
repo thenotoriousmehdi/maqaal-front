@@ -44,12 +44,12 @@ function Confirmer_mdp() {
   
   return (
     <div className="w-full  flex items-start ">
-    <div className="w-1/2 h-screen flex items-center justify-center">
+    <div className="w-0 xl:w-1/2  h-screen flex items-center justify-center">
       <img src={pic} alt=''  className="h-full w-full object-cover"/>
      </div>
-    <div  className="flexbox flex-col w-1/2 h-screen flex items-center justify-center  ">
+    <div  className="flexbox flex-col w-full xl:w-1/2 h-screen flex items-center justify-center  ">
     <div className=" h-12 w-full items-center bg-customBlue opacity-5 p-2 shadow-2xl rounded-full filter blur-md  "></div>
-     <div className="flex flex-col w-[726px] h-[901px] items-center justify-evenly  bg-white  shadow-2xl  rounded-2xl ">
+     <div className="w-[650px] xl:w-[726px] h-[901px] flex flex-col items-center justify-evenly  bg-white  shadow-2xl  rounded-2xl ">
      <img
       src={pic2}
       alt="Logo" 
