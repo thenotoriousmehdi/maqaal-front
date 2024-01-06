@@ -13,28 +13,38 @@ function Sign_in() {
     const [year, setYear] = useState('2024');
     const [errorEmail, setErrorEmail] = useState('');
     const [errorName, setErrorName] = useState('');
+    const [errorEmail1, setErrorEmail1] = useState('');
     
-    const handleSubmit = (event) => {
+     const handleSubmit = async (event) => {
+      
       console.log('Email:', email);
       console.log('Nom complet:', name);
       console.log('Sexe:', sexe);
       console.log('Date de Naissance:', day , month,year);
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!name) {
+          setErrorName('Veuillez saisir votre nom');
+        } 
+        else {
+          setErrorName('');
+          if (!email) {
+            setErrorEmail1('Veuillez saisir  votre email');
+          } else {
+            setErrorEmail1('');
+            if (!emailRegex.test(email)) {
+              setErrorEmail('Veillez saisir votre mail correctement');
+            } else {
+              setErrorEmail('');
+              // Envoyer le formulaire ou effectuer d'autres actions
+            }
+          }
+        }
 
-      if (!emailRegex.test(email)) {
-        setErrorEmail('Veillez saisir votre mail correctement');
-      } else {
-        setErrorEmail('');
-        // Envoyer le formulaire ou effectuer d'autres actions
-      }
-      if (!name) {
-        setErrorName('Veuillez saisir votre nom');
-      } else {
-        setErrorName('');
-        // Effectuer d'autres actions, par exemple, envoyer le formulaire
-      }
+      
+      
 
-    }
+      };
+     
 
     const getYears = () => {
       const currentYear = new Date().getFullYear();
@@ -203,6 +213,7 @@ function Sign_in() {
      className='w-[510px] h-20  bg-slate-200 rounded-[10px] text-center text-xl'
      />
        {errorName && <p className="text-red-500">{errorName}</p>}
+        {errorEmail1&& <p className="text-red-500">{errorEmail1}</p>}
         {errorEmail && <p className="text-red-500">{errorEmail}</p>}
 
        <div className='flex items-center '>
