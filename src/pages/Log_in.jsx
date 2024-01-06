@@ -9,6 +9,8 @@ const Log_in = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [errorEmail, setErrorEmail] = useState('');
+  const [errorPassword, setErrorPassword] = useState('');
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -18,19 +20,31 @@ const Log_in = () => {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(email);
     console.log(password);
+    
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailRegex.test(email)) {
-      setError('Format d\'e-mail est non valide');
-    } else {
-      setError('');
-      // Envoyer le formulaire ou effectuer d'autres actions
+    if (!email) {
+      setErrorEmail('Veuillez saisir votre email');
+    } 
+    else {
+      setErrorEmail('');
+      if (!password) {
+        setErrorPassword('Veuillez saisir  votre mot de passe ');
+      } else {
+        setErrorPassword('');
+        if (!emailRegex.test(email)) {
+          setError('Veillez saisir votre mail correctement');
+        } else {
+          setError('');
+          // Envoyer le formulaire ou effectuer d'autres actions
+        }
+      }
     }
 
+    
   }
   
   return (
@@ -66,7 +80,9 @@ const Log_in = () => {
     className='w-[528px] h-20  text-black text-[18px]   bg-slate-200 rounded-[10px] '
      />
     </div>
-     {error && <p className="text-red-500 font-['SF Pro']">{error}</p>}
+       {errorEmail && <p className="text-red-500">{errorEmail}</p>}
+        {errorPassword&& <p className="text-red-500">{errorPassword}</p>}
+        {error && <p className="text-red-500">{error}</p>}
        <div className='py-4'>
       <button onClick={handleSubmit}
       type="submit"
