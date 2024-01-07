@@ -78,7 +78,7 @@ const navbar = () => {
 
 
        
-       <div className='xl:flex flex-wrap   hidden  xl:block gap-14 '>
+       <div className='xl:flex xl:text-primary flex-wrap  hidden  xl:block gap-14 '>
           
          <NavLink to="/Apropos" className={({ isActive }) =>
             isActive ? " text-rosee" : "" }><p>A propos</p> </NavLink>
