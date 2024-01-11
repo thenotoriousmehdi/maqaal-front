@@ -80,38 +80,39 @@ function Sign_in() {
   return (
   
       <div className="w-full min-h-screen flex items-start ">
-      <div className="w-0 xl:w-1/2 h-screen flex items-center justify-center">
+     <div className="w-0 xl:w-1/2 h-screen flex items-center justify-center">
       <img src={pic} alt=''  className="h-full w-full object-cover"/>
      </div>
-    <div  className="flexbox flex-col w-full xl:w-1/2 h-screen flex items-center justify-center  ">
-    <div className=" h-12 w-full items-center bg-customBlue opacity-5 p-2 shadow-2xl rounded-full filter blur-md  "></div>
-     <div className="flex flex-col w-[650px] xl:w-[726px] h-[901px] items-center justify-evenly    bg-white  shadow-2xl  rounded-2xl ">
+     <div  className="flexbox flex-col w-full xl:w-1/2 h-screen flex items-center justify-center  ">
+ <div className=" hidden xl:block h-12 w-full items-center bg-customBlue opacity-5 p-2 md:shadow-2xl rounded-full filter md:blur-md  "></div>
+     <div className="flex flex-col w-full xl:w-[640px] xl:h-[901px] h-full items-center justify-evenly bg-white  md:shadow-2xl  rounded-2xl ">
      
      <img
       src={pic2}
       alt="Logo" 
-      className='w-15 h-9 mt-8 mb-9 px-0 py-0  bg-transparent '
+      className='w-15 h-9  px-0 py-0  bg-transparent '
      ></img>
-      < div className='flex flex-col justify-between items-center gap-4 py-4'>
-      <div class="w-[277px] h-[29px] text-center text-slate-700 text-3xl font-extrabold font-['Raleway']">Créer un compte </div>
-     <div class="w-[449px] h-[61px] text-center text-black text-[15px] font-medium font-['Raleway']">Créez un compte en remplissant le formulaire  avec vos informations personnelles
+      < div className='flex flex-col justify-evenly items-center gap-5 '>
+     <div class="xl:w-[277px] w-full h-[29px] text-center text-slate-700 text-3xl font-extrabold font-['Raleway']">Créer un compte </div>
+     <div class="xl:w-[449px] w-full h-[61px]  text-center text-black xl:text-[15px] text-[14px] font-medium font-['Raleway']">Créez un compte en remplissant le formulaire  avec vos informations personnelles
      
 </div> 
 </div> 
 
-   <div className=' flex flex-col  gap-6 items-center ' >
-   <div className='flex gap-6 w-[510px] justify-evenly '>
+   <div className='sm:w-full w-full  flex flex-col  gap-6 items-center ' >
+    <div className='flex flex-wrap sm:w-[510px] w-5/6 gap-6 justify-evenly '>
+
     <input
      id='text'
      type ="name"
      value={name}
      onChange={handleNameChange}
      placeholder='Votre nom complet '
-      className="w-[370px] h-20 bg-slate-200  rounded-[10px] text-black  text-xl font-['SF Pro'] text-center"
+      className="flex-1 sm:w-[370px] w-auto h-20 bg-slate-200  rounded-[10px] text-black  text-xl font-['SF Pro'] text-center"
      />
      <div >
      <select
-            className=" w-[160px] h-20 block bg-slate-200  rounded-[10px] py-2 px-3 text-gray-700 leading-tight e"
+            className="flex-1 sm:w-[160px] w-[100px] h-20 block bg-slate-200 w-full rounded-[10px] py-2 px-3 text-gray-700 leading-tight e"
             id="gender"
             value={sexe}
             onChange={handleSexeChange}
@@ -123,11 +124,11 @@ function Sign_in() {
      </div>
      </div>
 
-    <div className='flex  justify-between gap-4 '>
+    <div className='flex flex-wrap sm:w-[510px] w-full justify-evenly items-center gap-4 '>
      <label>
       
      <select
-      className="w-[156px] h-20  pl-2 bg-slate-200 rounded-[10px]"
+      className="sm:w-[156px] w-[100px] h-20  pl-2 bg-slate-200 rounded-[10px]"
       value={day}
        placeholder='Jour'
       onChange={handleDayChange}
@@ -168,7 +169,7 @@ function Sign_in() {
      <label>
     
     <select
-      className="w-[156px] h-20  pl-2 bg-slate-200 rounded-[10px]"
+      className="sm:w-[156px] w-[100px] h-20  pl-2 bg-slate-200 rounded-[10px]"
       value={month}
       onChange={handleMonthChange}
     >
@@ -190,7 +191,7 @@ function Sign_in() {
 
   </label>
   <select
-              className="w-[156px] h-20  pl-2 bg-slate-200 rounded-[10px]"
+              className="sm:w-[156px] w-[100px] h-20  pl-2 bg-slate-200 rounded-[10px]"
               value={year}
             
               onChange={handleYearChange}
@@ -210,7 +211,7 @@ function Sign_in() {
      value={email}
      onChange={handleEmailChange}
      placeholder='Entrez votre email '
-     className='w-[510px] h-20  bg-slate-200 rounded-[10px] text-center text-xl'
+     className='sm:w-[510px] w-5/6  h-20  bg-slate-200 rounded-[10px] text-center text-xl'
      />
        {errorName && <p className="text-red-500">{errorName}</p>}
         {errorEmail1&& <p className="text-red-500">{errorEmail1}</p>}
@@ -219,15 +220,15 @@ function Sign_in() {
        <div className='flex items-center '>
      <Link to={"/SignIn/Verification"}>   
       <button onClick={handleSubmit}
-       className="w-[264px] h-[65px] mb-14  bg-customBlue rounded-tl-[10px] rounded-bl-[10px] rounded-br-[10px]  justify-center items-center gap-2 inline-flex">
+       className="w-[264px] h-[65px]    md: mb-14  bg-customBlue rounded-tl-[10px] rounded-bl-[10px] rounded-br-[10px] text-white justify-center items-center gap-2 inline-flex">
       Continuer
      </button>
      </Link>  
      </div>
-     < div className='flex  flex-col justify-evenly mb-8  '>
-     <div className="w-[397px] h-[0px] opacity-40 border border-slate-700 mb-2"></div>
-    <div className='flex  justify-between '>
-    <div className="text-black text-opacity-40 text-[15px] font-['SF Pro']">  Vous avez pas encore de compte? </div>
+       < div className='flex flex-col sm:w-[397px] w-full justify-evenly mb-8  '>
+         <div className="sm:w-[397px] w-2/3 h-[0px] opacity-40 border border-slate-700 mb-2"></div>
+    <div className='flex sm:w-[397px] w-2/3 justify-between '>
+    <div className="text-black text-opacity-40  text-[15px] font-['SF Pro']">  Vous avez pas encore de compte? </div>
           <Link to={"/LogIn"}>
               <button
                 className="text-slate-700  text-[15px] font-['SF Pro']  text-[15px] "
@@ -240,7 +241,7 @@ function Sign_in() {
      </div>
      
      </div>
-     <div className="h-12 w-full items-center bg-customRed opacity-10 p-4 shadow-2xl rounded-full filter blur-md  "></div>
+     <div className="hidden xl:block h-12 w-full items-center bg-customRed opacity-10 p-4 shadow-2xl rounded-full filter blur-md  "></div>
     </div>
     
 
