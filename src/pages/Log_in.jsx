@@ -85,7 +85,7 @@ const Log_in = () => {
        
       <button onClick={handleSubmit}
       type="submit"
-       className="bg-customBlue sm:w-[528px] w-2/3 h-[65px] text-white font-normal rounded-tl-[10px] rounded-bl-[10px] rounded-br-[10px]">
+       className="bg-primary sm:w-[528px] w-2/3 h-[65px] text-white font-normal rounded-tl-[10px] rounded-bl-[10px] rounded-br-[10px]">
       Se connecter 
      </button>
      </div>
@@ -106,7 +106,7 @@ const Log_in = () => {
     </div>
      </div>
      </div>
-     <div className="h-12 w-full hidden xl:block items-center bg-customBlue opacity-10 p-4 shadow-2xl rounded-full filter blur-md  "></div>
+     <div className="h-12 w-full hidden xl:block items-center bg-primary opacity-10 p-4 shadow-2xl rounded-full filter blur-md  "></div>
     </div>
     
     <div className="w-0 xl:w-1/2 h-screen flex items-center justify-center">
