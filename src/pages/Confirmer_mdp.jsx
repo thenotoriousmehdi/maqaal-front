@@ -106,7 +106,7 @@ function Confirmer_mdp() {
     </div>
      </div>
      </div>
-     <div className="hidden xl:block h-12 w-full items-center bg-customRed opacity-10 p-4 shadow-2xl rounded-full filter blur-md  "></div>
+     <div className="hidden xl:block h-12 w-full items-center bg-rosee opacity-10 p-4 shadow-2xl rounded-full filter blur-md  "></div>
     </div>
     
   
