@@ -84,7 +84,7 @@ function Sign_in() {
       <img src={pic} alt=''  className="h-full w-full object-cover"/>
      </div>
      <div  className="flexbox flex-col w-full xl:w-1/2 h-screen flex items-center justify-center  ">
- <div className=" hidden xl:block h-12 w-full items-center bg-customBlue opacity-5 p-2 md:shadow-2xl rounded-full filter md:blur-md  "></div>
+ <div className=" hidden xl:block h-12 w-full items-center bg-primary opacity-5 p-2 md:shadow-2xl rounded-full filter md:blur-md  "></div>
      <div className="flex flex-col w-full xl:w-[640px] xl:h-[901px] h-full items-center justify-evenly bg-white  md:shadow-2xl  rounded-2xl ">
      
      <img
@@ -220,7 +220,7 @@ function Sign_in() {
        <div className='flex items-center '>
      <Link to={"/SignIn/Verification"}>   
       <button onClick={handleSubmit}
-       className="w-[264px] h-[65px]    md: mb-14  bg-customBlue rounded-tl-[10px] rounded-bl-[10px] rounded-br-[10px] text-white justify-center items-center gap-2 inline-flex">
+       className="w-[264px] h-[65px]    md: mb-14  bg-primary rounded-tl-[10px] rounded-bl-[10px] rounded-br-[10px] text-white justify-center items-center gap-2 inline-flex">
       Continuer
      </button>
      </Link>  
