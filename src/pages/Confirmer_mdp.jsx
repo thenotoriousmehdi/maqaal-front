@@ -48,7 +48,7 @@ function Confirmer_mdp() {
       <img src={pic} alt=''  className="h-full  w-full object-cover"/>
      </div>
     <div  className=" w-full xl:w-1/2 flexbox flex-col   h-screen  flex items-center justify-center  ">
-    <div className="hidden xl:block h-12 w-full items-center bg-customBlue opacity-5 p-2 shadow-2xl rounded-full filter blur-md  "></div>
+    <div className="hidden xl:block h-12 w-full items-center bg-primary opacity-5 p-2 shadow-2xl rounded-full filter blur-md  "></div>
     <div className="flex flex-col w-full xl:w-[640px] xl:h-[901px] h-full items-center justify-evenly bg-white  md:shadow-2xl  rounded-2xl ">
      <img
       src={pic2}
@@ -82,7 +82,7 @@ function Confirmer_mdp() {
      <div className='flex flex-col flex-wrap sm:w-[530px] w-full gap-2 justify-evenly items-center'>
      <Link to={"/SignIn/Verification/Confirmation"} >
       <button onClick={HandleSignInconf}
-       className="bg-customBlue sm:w-[528px] w-2/3 h-[65px] text-white font-normal rounded-tl-[10px] rounded-bl-[10px] rounded-br-[10px]">
+       className="bg-primary sm:w-[528px] w-2/3 h-[65px] text-white font-normal rounded-tl-[10px] rounded-bl-[10px] rounded-br-[10px]">
       Confirmer
      </button>
      
