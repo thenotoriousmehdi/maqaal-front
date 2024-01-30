@@ -8,7 +8,7 @@ const CompteValide = () => {
   return (
     <div className="w-full min-h-screen flex items-start ">
     <div  className=" flexbox flex-col  w-full xl:w-1/2 h-screen flex items-center justify-center  ">
-    <div className="hidden xl:block h-12 w-full items-center bg-customBlue opacity-5 p-2 shadow-2xl rounded-full filter blur-md  "></div>
+    <div className="hidden xl:block h-12 w-full items-center bg-primary opacity-5 p-2 shadow-2xl rounded-full filter blur-md  "></div>
     <div className="flex flex-col w-full xl:w-[640px] xl:h-[901px] h-full items-center justify-evenly bg-white  md:shadow-2xl  rounded-2xl ">
      <img
       src={pic2}
@@ -26,7 +26,7 @@ const CompteValide = () => {
      <div class="wl:w-[869.14px] w-full text-center text-slate-700 xl:text-3xl text-xl font-medium font-['Raleway'] leading-[45px]">Félicitations, vous avez terminer la <br/>création de votre compte avec succès. </div>
      </div>
      <button
-      className="bg-customBlue sm:w-[528px] h-[65px] w-2/3 font-['SF Pro'] text-white font-normal  rounded-tl-full rounded-bl-full rounded-tr-none rounded-br-full
+      className="bg-primary sm:w-[528px] h-[65px] w-2/3 font-['SF Pro'] text-white font-normal  rounded-tl-full rounded-bl-full rounded-tr-none rounded-br-full
        "
     >
     Vers l'acceuil
