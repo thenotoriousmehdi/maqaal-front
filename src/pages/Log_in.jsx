@@ -50,7 +50,7 @@ const Log_in = () => {
   return (
     <div className="w-full min-h-screen flex items-start ">
     <div  className="flexbox flex-col w-full xl:w-1/2  h-screen flex items-center justify-center  ">
-    <div className=" hidden xl:block h-12 w-full items-center bg-customRed opacity-5 p-2 shadow-2xl rounded-full filter blur-md  "></div>
+    <div className=" hidden xl:block h-12 w-full items-center bg-rosee opacity-5 p-2 shadow-2xl rounded-full filter blur-md  "></div>
     <div className="flex flex-col w-full xl:w-[640px] xl:h-[901px] h-full items-center justify-evenly bg-white  md:shadow-2xl  rounded-2xl ">
      <img
       src={pic2}
