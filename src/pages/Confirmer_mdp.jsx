@@ -110,7 +110,7 @@ const Confirmer_mdp = () => {
               placeholder="  Mot de passe "
               value={password}
               onChange={handlePasswordChange}
-              className="sm:w-[528px] w-2/3 h-20 text-black  p-2 text-[18px]   bg-slate-200 rounded-[10px]  "
+              className="sm:w-[510px] w-5/6 h-20 bg-slate-200 rounded-[10px] text-center text-xl"
             />
 
             <input
@@ -118,7 +118,7 @@ const Confirmer_mdp = () => {
               placeholder=" Confirmer votre mot de passe  "
               value={confirmPassword}
               onChange={handleConfirmPasswordChange}
-              className="sm:w-[528px] w-2/3 h-20 text-black text-[18px] p-2 bg-slate-200 rounded-[10px] "
+              className="sm:w-[510px] w-5/6 h-20 bg-slate-200 rounded-[10px] text-center text-xl"
             />
           </div>
 
