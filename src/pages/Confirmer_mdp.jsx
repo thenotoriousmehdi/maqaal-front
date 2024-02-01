@@ -17,7 +17,7 @@ const Confirmer_mdp = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
   const [errorConfirmedPassword, setErrorConfirmedPassword] = useState("");
-  const[errorPasswordLength,setPasswordLength]=useState('');
+  const [errorPasswordLength, setPasswordLength] = useState("");
 
   const [, setToken] = useContext(UserContext);
   const navigate = useNavigate();
@@ -68,12 +68,14 @@ const Confirmer_mdp = () => {
         if (password !== confirmPassword) {
           setErrorMessage("Les mots de passe ne correspondent pas ");
         } else {
-          if (password.length<8){
-            setPasswordLength('Le mot de passe doit contenir au moins 8 caractères.')
+          if (password.length < 8) {
+            setPasswordLength(
+              "Le mot de passe doit contenir au moins 8 caractères."
+            );
+          } else {
+            setErrorMessage("");
+            submitRegistration();
           }
-          else{
-          setErrorMessage('');}
-         submitRegistration();
         }
       }
     }
@@ -130,7 +132,9 @@ const Confirmer_mdp = () => {
               </button>
             </Link>
           </div>
-         {errorPasswordLength && <p className="text-red-500">{errorPasswordLength}</p>}
+          {errorPasswordLength && (
+            <p className="text-red-500">{errorPasswordLength}</p>
+          )}
           {errorPassword && <p className="text-red-500">{errorPassword}</p>}
           {errorConfirmedPassword && (
             <p className="text-red-500">{errorConfirmedPassword}</p>
