@@ -34,7 +34,7 @@ function App() {
         <Route path="/Moderateurpage" element={<Moderateur />} />
         <Route path="/Notreequipe" element={<Notreequipe />} />
         <Route path="/articles/:id" element={<ArticleDetails />} />
-        <Route path="/Adminpage/Moderateur:id" element={<ModifyModerateur />} />
+        <Route path="/Adminpage/Moderateur/:id" element={<ModifyModerateur />} />
         <Route path="/LogIn" element={<Log_in />} />
         <Route path="/SignIn" element={<Sign_in />} />
         <Route path="/SignIn/Verification" element={<Confirmer_mdp />} />

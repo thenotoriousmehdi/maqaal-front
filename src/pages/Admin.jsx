@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CgProfile } from "react-icons/cg"; // Import CgProfile
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +18,6 @@ import classNames from "classnames";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 
 export const Admin = () => {
-  const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
 
@@ -31,8 +30,23 @@ export const Admin = () => {
   const handleClose2 = () => {
     setOpen2(false);
   };
-  const handleDeleted = () => {
-    setOpen2(false);
+  const handleDeleted = async (moderateurId) => {
+    const requestOptions = {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    };
+
+    const response = await fetch(
+      `http://127.0.0.1:8000/moderateurs/${moderateurId}`,
+      requestOptions
+    );
+
+    if (!response.ok) {
+      console.log("La réponse n'est pas OK");
+    } else {
+      //setOpen2(false);
+      window.location.reload();
+    }
   };
   const handleClose = () => {
     console.log("email", email);
@@ -70,11 +84,29 @@ export const Admin = () => {
     setPassword(event.target.value);
   };
 
-  const moderateurs = [
+  const [moderateurs, setModerateurs] = useState(null);
+  /*const moderateurs = [
     { id: 1, nom: "SAADAOUI", prenom: "Kahina HOUDA" },
     { id: 2, nom: "BEDJOUDI", prenom: "Wassim" },
     { id: 3, nom: "YALA", prenom: "RIAD" },
-  ];
+  ];*/
+
+  const fetchModerateurs = async () => {
+    const requestOptions = {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    };
+    const response = await fetch(
+      "http://127.0.0.1:8000/moderateurs",
+      requestOptions
+    );
+    const donne = await response.json();
+    setModerateurs(donne);
+  };
+
+  useEffect(() => {
+    fetchModerateurs();
+  }, []);
 
   const ajouterModerateur = async () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -151,57 +183,64 @@ export const Admin = () => {
           </AccordionTrigger>
           <AccordionContent className="   w-full  pl-5 text-xl font-body  text-primary font-semibold  ">
             <div className="flex flex-col  bg-beige rounded-xl my-10 gap-6 ">
-              {moderateurs.map((moderateur) => (
-                <div
-                  key={moderateur.id}
-                  className="flex  justify-center  md:justify-between flex-wrap h-36 items-center border border-primary rounded-xl"
-                >
-                  <div className="flex items-center justify-evenly gap-3 md:gap-10 mx-3 md:ml-10">
-                    <CgProfile className="text-primary w-4 h-4 sm:h-7 sm:w-7" />
-                    <h4 className="text-primary font-body text-xl xl:text-3xl  font-semibold">
-                      {" "}
-                      {moderateur.nom} {moderateur.prenom}
-                    </h4>
-                  </div>
+              {moderateurs &&
+                moderateurs.map((moderateur) => (
+                  <div
+                    key={moderateur.id}
+                    className="flex  justify-center  md:justify-between flex-wrap h-36 items-center border border-primary rounded-xl"
+                  >
+                    <div className="flex items-center justify-evenly gap-3 md:gap-10 mx-3 md:ml-10">
+                      <CgProfile className="text-primary w-4 h-4 sm:h-7 sm:w-7" />
+                      <h4 className="text-primary font-body text-xl xl:text-3xl  font-semibold">
+                        {" "}
+                        {moderateur.username}
+                      </h4>
+                    </div>
 
-                  <div className="flex items-center justify-evenly gap-10 mr-10">
-                    <Link to="/Adminpage/Moderateur:id">
-                      <button className="text-center text-primary font-body text-xl sm:text-2xl xl:text-4xl font-semibold">
-                        Modifier
+                    <div className="flex items-center justify-evenly gap-10 mr-10">
+                      <Link to={`/Adminpage/Moderateur/${moderateur.id}`}>
+                        <button className="text-center text-primary font-body text-xl sm:text-2xl xl:text-4xl font-semibold">
+                          Modifier
+                        </button>
+                      </Link>
+                      <button
+                        onClick={handleClickOpen2}
+                        className="text-center text-red-700 font-body text-xl sm:text-2xl xl:text-4xl font-semibold"
+                      >
+                        Supprimer
                       </button>
-                    </Link>
-                    <button
-                      onClick={handleClickOpen2}
-                      className="text-center text-red-700 font-body text-xl sm:text-2xl xl:text-4xl font-semibold"
-                    >
-                      Supprimer
-                    </button>
 
-                    <Dialog
-                      open={open2}
-                      onClose={handleClose2}
-                      aria-labelledby="alert-dialog-title"
-                      aria-describedby="alert-dialog-description"
-                    >
-                      <DialogTitle id="alert-dialog-title">
-                        {"Etes-vous sure de vouloir supprimer ce modérateur?"}
-                      </DialogTitle>
-                      <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
-                          Supprimer un modérateur peut jdoiohdoodha aiu hdiahdza
-                          dziazd azidaiuzd aidh ai iaudhi a
-                        </DialogContentText>
-                      </DialogContent>
-                      <DialogActions>
-                        <Button onClick={handleClose2}>Annuler</Button>
-                        <Button onClick={handleDeleted} autoFocus>
-                          Supprimer
-                        </Button>
-                      </DialogActions>
-                    </Dialog>
+                      <Dialog
+                        open={open2}
+                        onClose={handleClose2}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
+                      >
+                        <DialogTitle id="alert-dialog-title">
+                          {
+                            "Etes-vous sûr(e) de vouloir supprimer ce modérateur ?"
+                          }
+                        </DialogTitle>
+                        <DialogContent>
+                          <DialogContentText id="alert-dialog-description">
+                            La suppression d'un modérateur est une action
+                            irréversible et peut avoir un impact sur la gestion
+                            de notre communauté.
+                          </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                          <Button onClick={handleClose2}>Annuler</Button>
+                          <Button
+                            onClick={() => handleDeleted(moderateur.id)}
+                            autoFocus
+                          >
+                            Supprimer
+                          </Button>
+                        </DialogActions>
+                      </Dialog>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
             </div>
 
             <div>
@@ -271,17 +310,17 @@ export const Admin = () => {
                     ""
                   )}
                   {/* <DialogContentText>
-                            To subscribe to this website, please enter your email address here. We
-                            will send updates occasionally.
-                            </DialogContentText>
-                             */}
+                          To subscribe to this website, please enter your email address here. We
+                          will send updates occasionally.
+                          </DialogContentText>
+                           */}
                 </DialogContent>
                 <DialogActions>
                   <button
                     //onClick={handleClose}
                     onClick={ajouterModerateur}
                     className="font-title   hover:opacity-80 text-center text-xl text-white m-4  w-full rounded-xl h-14
-                     transform transition-transform duration-200 ease-in-out hover:scale-95     focus:ring-2 focus:ring-blue-700"
+                   transform transition-transform duration-200 ease-in-out hover:scale-95     focus:ring-2 focus:ring-blue-700"
                     style={{ backgroundColor: "#2E4165" }}
                   >
                     {" "}
