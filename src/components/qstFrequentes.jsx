@@ -24,11 +24,14 @@ const qstFrequentes = () => {
  
   const FaqItems = [
 
-    {title : 'question 1 ' , desc : ' answer 1 ' , id:1}, 
-    {title : 'question 2 ' , desc : ' answer 2 ' , id:2}, 
-    {title : 'question 3 ' , desc : ' answer 1 ' , id:3}, 
-    {title : 'question 4 ' , desc : ' answer 2 ' , id:4}, 
-    {title : 'question 5 ' , desc : ' answer 2 ' , id:5}, 
+    {title : 'Comment puis-je rechercher un article ? ' , desc : 'Pour rechercher un article spécifique, veuillez utiliser la barre de recherche sur la page d'accueil pour rechercher des articles par titre, auteur, et mot-clé,institutions et période entre deux dates de publication .' , id:1}, 
+    {title : 'Comment puis-je m’inscrire dans Maqaal ? ' , desc : 'Pour vous inscrire, il suffit de cliquer sur le bouton “S'inscrire” en haut à droite et de remplir vos informations personnelles et votre mot de passe puis appuyer sur confirmer .
+
+ ' , id:2}, 
+    {title : 'Comment puis-je me connecter ?  ' , desc : 'Si vous avez déjà un compte sur Maqaal , il suffit juste d'appuyer sur le bouton “  Se connecter “ en haut à droite, saisir votre mail et votre mot de passe et puis appuyer sur “Se connecter “ .
+ ' , id:3}, 
+    {title : 'Comment puis-je sauvegarder un article comme favori ?  ' , desc : 'Pour ce faire , sélectionnez l’article en question et appuyez sur le sur bouton sauvegarde à côté du de l’auteur. ' , id:4}, 
+
     
     
   ];
