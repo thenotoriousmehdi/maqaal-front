@@ -103,23 +103,23 @@ const navbar = () => {
          <div className=' flex   items-center gap-7  mr-6 '>
 
     {/* when user is connected */}
-      <Link to="/ArticlesSauvgardes"  >
+      {/* <Link to="/ArticlesSauvgardes"  >
        <button   className='p-4 border sm:block hidden border-primary  rounded-tl-3xl rounded-b-3xl transform transition-transform duration-200 ease-in-out hover:scale-110'> <FaBookmark className='text-primary w-4 h-4 sm:h-7 sm:w-7 '/></button>
       </Link>
      <Link to="/Adminpage">   
-      {/* when role is moderateur path is to="/Moderateurpage" ||  */}
+      {/* when role is moderateur path is to="/Moderateurpage" ||  
        <button className='p-4 border border-primary sm:block hidden  rounded-tl-3xl rounded-b-3xl transform transition-transform duration-200 ease-in-out hover:scale-110'> <CgProfile  className='text-primary w-4 h-4 sm:h-7 sm:w-7'/> </button>
-    </Link>  
+    </Link>   */}
     
      {/* when user is not connected  */}
-        {/* <Link to={"/LogIn"}>
+        <Link to={"/LogIn"}>
         <button type='submit' className=' hidden md:block'>se connecter </button>
         </Link>   
 
         <Link to={"/SignIn"}>
         <button type='submit' className=' hidden md:block items-center m-3 px-8 lg:px-14   pb-2 lg:py-7 bg-primary rounded-tl-3xl rounded-b-3xl   lg:font-medium  h-16 lg:h-20 text-white  hover:bg-red-400
           lg:text-2xl text-lg transform transition-transform duration-200 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-rose-700 focus:ring-opacity-75 '>s'inscrire</button>
-          </Link> */}
+          </Link>
 
           {/* burger Icon menu */}
         <button className='xl:hidden' onClick={toggleNavbar}> {isOpen ?  <IoCloseSharp /> :<MdOutlineMenu />}</button>
