@@ -17,6 +17,8 @@ const Confirmer_mdp = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
   const [errorConfirmedPassword, setErrorConfirmedPassword] = useState("");
+  const[errorPasswordLength,setPasswordLength]=useState('');
+
   const [, setToken] = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -66,8 +68,12 @@ const Confirmer_mdp = () => {
         if (password !== confirmPassword) {
           setErrorMessage("Les mots de passe ne correspondent pas ");
         } else {
-          setErrorMessage("");
-          submitRegistration();
+          if (password.length<8){
+            setPasswordLength('Le mot de passe doit contenir au moins 8 caractères.')
+          }
+          else{
+          setErrorMessage('');}
+         submitRegistration();
         }
       }
     }
@@ -102,7 +108,7 @@ const Confirmer_mdp = () => {
               placeholder="  Mot de passe "
               value={password}
               onChange={handlePasswordChange}
-              className="sm:w-[528px] w-2/3 h-20 text-black  p-1 text-[18px]   bg-slate-200 rounded-[10px]  "
+              className="sm:w-[528px] w-2/3 h-20 text-black  p-2 text-[18px]   bg-slate-200 rounded-[10px]  "
             />
 
             <input
@@ -110,7 +116,7 @@ const Confirmer_mdp = () => {
               placeholder=" Confirmer votre mot de passe  "
               value={confirmPassword}
               onChange={handleConfirmPasswordChange}
-              className="sm:w-[528px] w-2/3 h-20 text-black text-[18px] p-1 bg-slate-200 rounded-[10px] "
+              className="sm:w-[528px] w-2/3 h-20 text-black text-[18px] p-2 bg-slate-200 rounded-[10px] "
             />
           </div>
 
@@ -124,6 +130,7 @@ const Confirmer_mdp = () => {
               </button>
             </Link>
           </div>
+         {errorPasswordLength && <p className="text-red-500">{errorPasswordLength}</p>}
           {errorPassword && <p className="text-red-500">{errorPassword}</p>}
           {errorConfirmedPassword && (
             <p className="text-red-500">{errorConfirmedPassword}</p>
