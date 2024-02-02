@@ -56,10 +56,14 @@ const Notreequipe = () => {
 
   return (
     <>
+<<<<<<< HEAD
   <Headroom>
   <Navbar />{" "}
 </Headroom>
     <h1 className='font-title  font-extrabold my-14 text-3xl md:text-6xl text-primary text-center'> NOTRE <span className=' text-rosee '>EQUIUPE</span></h1>
+=======
+    <h1 className='font-title  font-extrabold my-14 text-3xl md:text-6xl text-primary text-center'> NOTRE <span className=' text-rosee '>EQUIPE</span></h1>
+>>>>>>> e979b13204bd72ad201c6ac9ec46aae50dc0f594
      <div className='flex flex-wrap my-20 justify-center'>    
     {members.map((props) => ( 
        
