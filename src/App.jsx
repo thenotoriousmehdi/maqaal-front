@@ -1,4 +1,4 @@
-import Navbar from "./components/navbar";
+
 import Footer from "./components/footer";
 
 import { Route, Routes } from "react-router-dom";
@@ -9,7 +9,6 @@ import Articles from "./pages/Articles";
 import Faq from "./pages/Faq";
 import Notreequipe from "./pages/Notreequipe";
 import { ModifyModerateur } from "./pages/ModifyModerateur";
-import Headroom from "react-headroom/src";
 import ArticleDetails from "./pages/ArticleDetails";
 import ArticlesSauvgardes from "./pages/ArticlesSauvgardes";
 import { Moderateur } from "./pages/Moderateur";
@@ -21,9 +20,7 @@ import Confirmer_mdp from "./pages/Confirmer_mdp";
 function App() {
   return (
     <>
-      <Headroom>
-        <Navbar />{" "}
-      </Headroom>
+     
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Apropos" element={<Apropospage />} />

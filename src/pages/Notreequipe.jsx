@@ -4,6 +4,8 @@ import Kahina from '../assets/kahina.jpg'
  import wassim from '../assets/wassim.png'
  import nesrine from '../assets/NESRINE.jpg'
 import MemberCard from '../components/memberCard'
+import Headroom from "react-headroom/src";
+import Navbar from "../components/navbar";
 const Notreequipe = () => {
        
  
@@ -54,6 +56,9 @@ const Notreequipe = () => {
 
   return (
     <>
+  <Headroom>
+  <Navbar />{" "}
+</Headroom>
     <h1 className='font-title  font-extrabold my-14 text-3xl md:text-6xl text-primary text-center'> NOTRE <span className=' text-rosee '>EQUIUPE</span></h1>
      <div className='flex flex-wrap my-20 justify-center'>    
     {members.map((props) => ( 

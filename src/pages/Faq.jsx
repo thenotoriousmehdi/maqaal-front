@@ -1,11 +1,11 @@
 import DOTSgrid from "../assets/dotsGrid.png";
 import React from "react";
-import FadeIn from "../components/FadeIn";
 import { useState } from "react";
 import * as Accordion from "@radix-ui/react-accordion";
 import classNames from "classnames";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
-
+import Headroom from "react-headroom/src";
+import Navbar from "../components/navbar";
 const Faq = () => {
   const [open, setOpen] = useState(null);
 
@@ -40,6 +40,10 @@ const Faq = () => {
   ];
 
   return (
+  <>
+  <Headroom>
+  <Navbar />{" "}
+</Headroom>
     <div className="mt-10  bg-bgr bg-opacity-6    rounded-tl-3xl rounded-b-3xl">
       <div className="flex flex-col items-center  my-10">
         <h1 className=" font-title text-center md:text-5xl text-3xl lg:text-6xl font-extrabold p-4 text-primary my-10">
@@ -70,7 +74,7 @@ const Faq = () => {
         {" "}
         <img src={DOTSgrid} alt="dots grid " />{" "}
       </div>
-    </div>
+    </div></>
   );
 };
 const AccordionTrigger = React.forwardRef(

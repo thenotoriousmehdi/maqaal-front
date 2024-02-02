@@ -9,14 +9,14 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-
+import Headroom from "react-headroom";
 import Logo from "../assets/Frame68007.png";
 import { CiCirclePlus } from "react-icons/ci";
 
 import * as Accordion from "@radix-ui/react-accordion";
 import classNames from "classnames";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
-
+import Navbar from "../components/navbar";
 export const Admin = () => {
   const [open, setOpen] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
@@ -84,12 +84,12 @@ export const Admin = () => {
     setPassword(event.target.value);
   };
 
-  const [moderateurs, setModerateurs] = useState(null);
-  /*const moderateurs = [
+  //const [moderateurs, setModerateurs] = useState(null);
+  const moderateurs = [
     { id: 1, nom: "SAADAOUI", prenom: "Kahina HOUDA" },
     { id: 2, nom: "BEDJOUDI", prenom: "Wassim" },
     { id: 3, nom: "YALA", prenom: "RIAD" },
-  ];*/
+  ];
 
   const fetchModerateurs = async () => {
     const requestOptions = {
@@ -162,6 +162,9 @@ export const Admin = () => {
 
   return (
     <>
+     <Headroom>
+        <Navbar />{" "}
+      </Headroom>
       <h1 className=" text-3xl sm:text-4xl font-title my-6 font-extrabold mx-5 sm:mx-12 xl:mx-32 text-primary ">
         Bonjour , <span className=" text-rosee">Admin</span>{" "}
       </h1>

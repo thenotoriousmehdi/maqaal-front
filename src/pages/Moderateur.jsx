@@ -2,10 +2,12 @@ import React from 'react'
 
 import ArticleCard from '../components/articleCard'
 import {  useState , useEffect} from "react";
-
+import Navbar from "../components/navbar";
 import ReactPaginate from 'react-paginate';
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { IoIosArrowRoundForward } from "react-icons/io";
+import Headroom from "react-headroom/src";
+
 export const Moderateur = () =>{ 
     const ifSaved = true 
     
@@ -43,9 +45,12 @@ export const Moderateur = () =>{
        const handlePageChange = (selectedPage) => {
          setCurrentPage(selectedPage.selected);
        };
-         
+          
      return (
        <>
+      <Headroom>
+  <Navbar />{" "}
+</Headroom>
       <h1 className=' text-3xl sm:text-5xl font-title my-14 font-extrabold mx-5 sm:mx-12 xl:mx-32 text-primary '>Bonjour ,  <span className=' text-rosee '>Moderateur X</span> </h1>
      
    

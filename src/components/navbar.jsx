@@ -107,7 +107,7 @@ const navbar = () => {
         </div>
 
         <div className="flex items-center gap-7 mr-6">
-          {token ? (
+          {/* {token ? (
             // User is connected
             <>
               <Link to="/ArticlesSauvgardes">
@@ -144,7 +144,22 @@ const navbar = () => {
               </Link>
             </>
           )} 
-          
+           */}
+            <Link to="/ArticlesSauvgardes">
+                <button className="p-4 border sm:block hidden border-primary rounded-tl-3xl rounded-b-3xl transform transition-transform duration-200 ease-in-out hover:scale-110">
+                  <FaBookmark className="text-primary w-4 h-4 sm:h-7 sm:w-7" />
+                </button>
+              </Link>
+              <Link to="/Adminpage">
+                <button className="p-4 border border-primary sm:block hidden rounded-tl-3xl rounded-b-3xl transform transition-transform duration-200 ease-in-out hover:scale-110">
+                  <CgProfile className="text-primary w-4 h-4 sm:h-7 sm:w-7" />
+                </button>
+              </Link>
+              <Link to="/">
+                <button className="p-4 border border-primary sm:block hidden rounded-tl-3xl rounded-b-3xl transform transition-transform duration-200 ease-in-out hover:scale-110">
+                  <MdLogout className="text-primary w-4 h-4 sm:h-7 sm:w-7" />
+                </button>
+              </Link>
           <button className="xl:hidden" onClick={toggleNavbar}>
             {isOpen ? <IoCloseSharp /> : <MdOutlineMenu />}
           </button>

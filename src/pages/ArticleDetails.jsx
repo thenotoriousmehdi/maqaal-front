@@ -1,11 +1,13 @@
-import { Input } from '@mui/material';
+
 import React, { useState , useEffect , useRef } from 'react'
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { FaRegFilePdf } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+  import Headroom from "react-headroom/src";   
+  import Navbar from "../components/navbar";
 
 const ArticleDetails = () => {
-
+  
 
   let article= {
     id: '1',
@@ -104,9 +106,12 @@ const handleSubmitModifications =()=>{
     handleShowless()
     console.log("title" , title )
 }
-         
+      
   return (
-    
+  <>
+    <Headroom>
+      <Navbar />{" "}
+    </Headroom>
     < div className=' bg-bgr px-6   sm:px-20 xl:px-44'>
       <Link to="/Articles">
     <button class="  border border-primary hover:text-white my-10 rounded-tl-3xl rounded-b-3xl lg:ml-40 ml-12  p-3  hover:bg-slate-700 text-white font-bold   transform transition-transform duration-200 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-opacity-75">
@@ -270,7 +275,7 @@ const handleSubmitModifications =()=>{
         
       
 </div>
-
+</>
   )
 }
  

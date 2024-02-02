@@ -15,6 +15,8 @@ import { MdOutlinePerson3 } from "react-icons/md";
 import { FaUniversity } from "react-icons/fa";
 import { IoMdCalendar } from "react-icons/io";
 import { IoFilter } from "react-icons/io5";
+import Headroom from "react-headroom/src";
+import Navbar from "../components/navbar";
 const Articles = () => {
 
 
@@ -68,6 +70,9 @@ const Articles = () => {
       
   return (
     <>
+  <Headroom>
+  <Navbar />{" "}
+</Headroom>
     <div className='flex   xl:gap-10    gap-[10%]   items-center '>
          <Link to="/">
          <button className="  border border-primary rounded-tl-3xl rounded-b-3xl lg:mx-28 mx-6  p-3  hover:bg-slate-700 text-white font-bold   transform transition-transform duration-200 ease-in-out hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-opacity-75">
