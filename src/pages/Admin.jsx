@@ -20,34 +20,46 @@ import { ChevronDownIcon } from "@radix-ui/react-icons";
 export const Admin = () => {
   const [open, setOpen] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
+  const [moderatorIdToDelete, setModeratorIdToDelete] = useState(null);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-  const handleClickOpen2 = () => {
+  const handleClickOpen2 = (moderateurId) => {
+    setModeratorIdToDelete(moderateurId);
     setOpen2(true);
   };
+
   const handleClose2 = () => {
     setOpen2(false);
   };
-  const handleDeleted = async (moderateurId) => {
+  const handleDeleted = async () => {
+    console.log("ID du modérateur à supprimer :", moderatorIdToDelete);
+
+    if (!moderatorIdToDelete) {
+      console.log("ID du modérateur à supprimer non défini");
+      return;
+    }
+
     const requestOptions = {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     };
 
     const response = await fetch(
-      `http://127.0.0.1:8000/moderateurs/${moderateurId}`,
+      `http://127.0.0.1:8000/moderateurs/${moderatorIdToDelete}`,
       requestOptions
     );
 
     if (!response.ok) {
       console.log("La réponse n'est pas OK");
     } else {
-      //setOpen2(false);
+      setModeratorIdToDelete(null);
+      setOpen2(false);
       window.location.reload();
     }
   };
+
   const handleClose = () => {
     console.log("email", email);
     console.log("password", password);
@@ -138,6 +150,8 @@ export const Admin = () => {
                   password: password,
                   username: name,
                   role: "moderateur",
+                  dateNaissance: "",
+                  gender: "",
                 }),
               };
 
@@ -204,7 +218,7 @@ export const Admin = () => {
                         </button>
                       </Link>
                       <button
-                        onClick={handleClickOpen2}
+                        onClick={() => handleClickOpen2(moderateur.id)}
                         className="text-center text-red-700 font-body text-xl sm:text-2xl xl:text-4xl font-semibold"
                       >
                         Supprimer
@@ -230,10 +244,7 @@ export const Admin = () => {
                         </DialogContent>
                         <DialogActions>
                           <Button onClick={handleClose2}>Annuler</Button>
-                          <Button
-                            onClick={() => handleDeleted(moderateur.id)}
-                            autoFocus
-                          >
+                          <Button onClick={handleDeleted} autoFocus>
                             Supprimer
                           </Button>
                         </DialogActions>

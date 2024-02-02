@@ -31,6 +31,8 @@ const Confirmer_mdp = () => {
         password: password,
         username: name,
         role: "user",
+        dateNaissance: dateNaissance,
+        gender: sexe,
       }),
     };
 
