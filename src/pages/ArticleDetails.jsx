@@ -2,27 +2,71 @@
 import React, { useState , useEffect , useRef } from 'react'
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { FaRegFilePdf } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
   import Headroom from "react-headroom/src";   
   import Navbar from "../components/navbar";
 
-const ArticleDetails = () => {
-  
 
-  let article= {
-    id: '1',
-    title: 'Python comme langage scientifique',
-    name: 'Varoquaux Gaël',
-    ifSaved: false,
-    Resume:
-      "De nos jours, l'informatique et la simulation numérique prennent une place de plus en plus importante dans la recherche scientifique, ainsi que le développement technologique. L'ENIAC, le premier ordinateur conçu, avait pour but le calcul scientifique, puisqu'il était utilisé pour calculer des trajectoires d'artillerie. En effet, un ordinateur permet d'automatiser bien des tâches, dont les tâches de calcul, et d'explorer systématiquement les problèmes scientifiques.",
-    Introduction:
-      "De façon générale, un problème de recherche et développement se présente comme un modèle que l'on veut étudier et comprendre. Le modèle peut aussi bien être un modèle théorique qu'un système modèle fait d'expériences ou une maquette. Pour développer son intuition, l'idéal est de pouvoir interagir le plus possible avec le modèle. Ainsi, depuis l'antiquité, les mathématiciens utilisent des dessins et des calculs pour formuler leurs hypothèses, mais la généralisation des ordinateurs, il y a vingt ans, a conduit à l'apparition des mathématiques dites « expérimentales », s'appuyant sur l'utilisation systématique de l'informatique. Dans l'industrie, par exemple, lors de la conception d'un nouveau produit, la simulation numérique permet de tester systématiquement.",
-    Body: `De nombreuses solutions géométriques ou des matériaux différents de manière relativement pratique, plutôt que de construire de nombreuses maquettes à grand coût. L'informatique scientifique a pour but premier de faciliter cette exploration du problème. Ses outils, que le scientifique doit apprendre et maîtriser, ne sont que des barrières pour l'utilisateur entre son problème et lui-même. Par ailleurs, dans le domaine de la recherche, il est inévitable que les problèmes soient souvent mal posés, et changent en permanence au fur et à mesure que l'on progresse. C'est pourquoi, il faut que les solutions utilisées soient aussi souples et agiles que possible.`.repeat(5),
+
+
+const ArticleDetails = () => {
+
+  const {id}= useParams();
+  console.log(id);
+
+  const optionGet = {
+    method: 'GET',
+     headers: {
+     'Content-Type': 'application/json', 
+    },
+    };
+
+    let article = {
+      id: '1',
+      title: 'Python comme langage scientifique',
+      name: 'Varoquaux Gaël',
+      ifSaved: false,
+      Institusions: "esi alger, estin bejaia",
+      sections: [],
+      refs: [],
+    };
+    
+    const [ArticleToShow, setArticleToShow] = useState(article);
+    
+    useEffect(() => {
+      const getArticle = fetch(`http://localhost:8000/article/Perform_search/${id}`, optionGet)
+        .then((res) => res.json())
+        .then((data) => {
+          var ArticleofID = {
+            id: data.hits.hits[0]._source.Article_ID,
+            title: data.hits.hits[0]._source.DocumentTitle,
+            name: data.hits.hits[0]._source.Auteurs,
+            ifSaved: false,
+            Institusions: data.hits.hits[0]._source.Institutions,
+            sections: data.hits.hits[0]._source.Sections,
+            refs: data.hits.hits[0]._source.references,
+          };
+    
+          setArticleToShow(ArticleofID);
+          console.log("this article is meant to be shown");
+         
+        })
+        .catch((err) => {
+          console.log("problem fetching article of id" + id);
+        });
+    }, [id]);
+
+    console.log(ArticleToShow);
+
+  const [auteur , setAuteur] = useState(article.name)
+  const [source , setSource] = useState(article.source)
+  const [Resume , setResume] = useState(article.Resume)
+  const [Introduction , setIntroduction] = useState(article.Introduction)
+  const [Body , setBody] = useState(article.Body)
+  const [title , setTitle] = useState(article.title)
+  const [motsCles , setMotsCles] = useState(article.motsCles)
+
   
-    motsCles: 'Python, cs, computer science, webdev, ml, ai, backend, dev, langage',
-    source: 'GNU/Linux Magazine HS n°Numéro 40',
-  };
 
    const [moderateurRole , usemoderateurRole] = useState(true); 
    const [modify , setModify ] = useState(false); 
@@ -53,7 +97,6 @@ const ArticleDetails = () => {
     setShow(true) 
     setMoreposition( window.scrollY );
     setInitHeight(InitHeight*2)
-    
     
   }
 
@@ -91,13 +134,7 @@ const ArticleDetails = () => {
   }, []);
      
      
-  const [auteur , setAuteur] = useState(article.name)
-  const [source , setSource] = useState(article.source)
-  const [Resume , setResume] = useState(article.Resume)
-  const [Introduction , setIntroduction] = useState(article.Introduction)
-  const [Body , setBody] = useState(article.Body)
-  const [title , setTitle] = useState(article.title)
-  const [motsCles , setMotsCles] = useState(article.motsCles)
+  
 
 
 const handleSubmitModifications =()=>{
@@ -125,7 +162,7 @@ const handleSubmitModifications =()=>{
       onChange={e=>setTitle(e.target.value)}
       className='border-primary font-title font-black w-full text-primary text-4xl sm:text-5xl md:text-6xl  my-9    placeholder:text-lg placeholder:p-2 ring-1 border rounded-xl'
      />
-     : <h1 className='font-title font-black text-primary text-4xl sm:text-5xl md:text-6xl  my-9 '> {article.title}</h1>
+     : <h1 className='font-title font-black text-primary text-4xl sm:text-5xl md:text-6xl  my-9 '> {ArticleToShow.title}</h1>
 }
    
     <div className=' mb-20 flex flex-wrap justify-between items-start '>
@@ -150,11 +187,9 @@ const handleSubmitModifications =()=>{
 
             : 
             <>
-            <span className=' my-2'>{article.name}</span> 
-            <span className='my-2'>{article.source}</span>
+            <span className=' my-2'>{ArticleToShow.name}</span> 
+            <span className='my-2'>{ArticleToShow.source}</span>
             </>}
-
-
 
               
         </div>
@@ -176,8 +211,7 @@ const handleSubmitModifications =()=>{
          className=' my-6  md:my-0 w-full sm:w-[566px] h-[116px] px-4 md:px-10 justify-between  mr-2 flex items-center bg-rosee rounded-xl transform transition-transform duration-200 ease-in-out hover:scale-105 '> 
          <span className=' font-title text-white  text-xl mx-7 md:mx-0 sm:text-4xl font-extrabold '> Modifier </span>
          </button>    )
-  
-        
+
         : 
         
         <button className=' my-6  md:my-0 sm:w-[566px] h-[116px] px-4 md:px-10 justify-between  mr-2 flex items-center bg-rosee rounded-xl transform transition-transform duration-200 ease-in-out hover:scale-105 '> 
@@ -194,7 +228,7 @@ const handleSubmitModifications =()=>{
         <div className=' w-full md:w-1/2'>
                  {modify?
                    <>
-                    <h4 className='font-title mb-10 text-3xl font-extrabold'>Résume</h4>
+                    <h4 className='font-title mb-10 text-3xl font-extrabold'> </h4>
                     <textarea   type='text' placeholder={`Modifier le resume de l'article...`}
                     value={Resume}
                     rows={14}
@@ -211,12 +245,12 @@ const handleSubmitModifications =()=>{
                    </>
                  :
                     <>
-                      <h4 className='font-title mb-10 text-3xl font-extrabold'>Résume</h4>
+                      
                       <p className=' font-body mb-14  text-2xl  font-medium '>
                        {article.Resume}
                      </p>
 
-                     <h4 className='font-title mb-10 text-3xl font-extrabold'>Mot clés </h4>
+                    
                      <p className=' font-body  text-2xl  font-medium '>
                      {article.motsCles}
                      </p>
@@ -225,7 +259,7 @@ const handleSubmitModifications =()=>{
 
 
         <div className=' w-full md:w-1/2'>
-                   <h4 className='font-title mb-10 text-3xl font-extrabold'>Introduction</h4>
+                    
 
                    {modify?
                    <textarea type='text' placeholder={`Modifier l'introduction de l'article...`}
@@ -252,9 +286,19 @@ const handleSubmitModifications =()=>{
         className='border-primary  w-full  my-9 font-body  text-2xl text-primary   font-medium   placeholder:text-lg placeholder:p-2 ring-1 border rounded-xl'
       />
       : 
-      <p ref={elementRef} className={InitHeight=== 33? ' font-body  text-2xl text-primary   font-medium max-h-[33rem]  overflow-hidden  ':  ' font-body  text-2xl text-primary   font-medium   '  }  >
-            {article.Body}
-        </p>
+      
+      <p ref={elementRef} className={InitHeight === 33 ? 'font-body text-2xl text-primary font-medium max-h-[33rem] overflow-hidden' : 'font-body text-2xl text-primary font-medium'}>
+      {(ArticleToShow.sections || []).map((section, sectionIndex) => (
+        <div key={sectionIndex}>
+          <h4 className='font-title mt-16 mb-4 text-3xl font-extrabold '>{section.title}</h4>
+          {(section.paragraphs || []).map((paragraph, paragraphIndex) => (
+            <p className='font-body text-2xl text-primary' key={paragraphIndex}>{paragraph}</p>
+          ))}
+        </div>
+      ))}
+    </p>
+
+      
       }
        
 

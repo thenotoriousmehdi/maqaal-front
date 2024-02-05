@@ -17,8 +17,53 @@ import { IoMdCalendar } from "react-icons/io";
 import { IoFilter } from "react-icons/io5";
 import Headroom from "react-headroom/src";
 import Navbar from "../components/navbar";
+
+
 const Articles = () => {
 
+/*   const opt={
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ data: fileName }),
+  }
+  
+  const [ArticlesToShowParam,  setArticlesToShowParam ] = useState('all');
+
+  useEffect(()=>{
+
+    if(ArticlesToShowParam=="all"){
+
+      const Articles = fetch("http://localhost:8000/article/Perform_search",opt)   
+      .then((res)=>{
+         return res.json();
+      })
+      .then((data)=>{
+         console.log(data);
+      })  
+        .catch((err)=>{
+      console.log("err fetch data");
+    })
+
+    }else{
+
+      const Articles = fetch("http://localhost:8000/article/Perform_search",opt)   
+      .then((res)=>{
+         return res.json();
+      })
+      .then((data)=>{
+         console.log(data);
+      })  
+        .catch((err)=>{
+      console.log("err fetch data");
+    })
+
+
+    }
+
+
+  },[ArticlesToShowParam]) */
 
   const articles = [
   

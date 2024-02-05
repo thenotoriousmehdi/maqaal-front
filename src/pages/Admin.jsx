@@ -22,6 +22,102 @@ export const Admin = () => {
   const [open2, setOpen2] = React.useState(false);
   const [moderatorIdToDelete, setModeratorIdToDelete] = useState(null);
 
+  
+  const [FileUploadState,SetFileUploadState] = useState('Choisisez un fichier a uploader')
+  const [fileName, setFileName] = useState('');
+   
+
+  useEffect(() => {
+    console.log("Updated: " + fileName);
+    // You can perform additional logic based on the updated fileName here
+  }, [fileName]);
+
+  const handleFileChange = (event) => {
+    const fileInput = event.target;
+    if (fileInput.files.length > 0) {
+      const selectedFile = fileInput.files[0];
+      setFileName(selectedFile.name);
+      console.log(selectedFile.name);
+    } else {
+      setFileName('');
+    }
+  };
+
+  
+  async function SubmitEvent(e){
+    e.preventDefault();
+
+  console.log('File Name:', fileName);
+   
+  const response = await fetch("http://127.0.0.1:8000/article/doExist", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ data: fileName }),
+    });
+
+  const responseData = await response.json();
+  console.log(responseData);
+
+  var upload=false
+  if(responseData.info){
+    console.log("Already exists")
+  }else{
+    console.log("New file")
+    upload=true
+  }
+  
+  const fileInput = document.querySelector('input[type="file"]');
+   
+  
+  const options2 = {
+    method: 'GET',
+     headers: {
+  'Content-Type': 'text/plain', // Set the content type to text/plain
+  },
+    };
+
+  
+  if(upload){
+    SetFileUploadState("Un nouveau fichier uploadé")
+    setTimeout(()=>{
+      SetFileUploadState("Choisisez un fichier a uploader")
+    },2000)
+    //Upload File
+    const formData = new FormData();
+    formData.append('file', fileInput.files[0]);
+   
+    const options = {
+      method: 'POST',
+      body: formData,
+    };
+
+
+    var response1 = await (await fetch('http://127.0.0.1:8000/article/upload',options)).json()
+    console.log(response1);
+
+    console.log(response1.file_path);
+    var fileNamehex = response1.file_path.split("/").pop() 
+    console.log(fileNamehex);
+  
+    //extract The upladed file
+    var response2 =await fetch(`http://127.0.0.1:8000/article/extract/${fileNamehex}`,options2); 
+    console.log("hihi"+ response2);
+
+
+
+    //Index the files
+    var response3 = await fetch("http://127.0.0.1:8000/article/index",options2)  
+   }else{
+     
+    SetFileUploadState("Le fichier déja existant ")
+    setTimeout(()=>{
+      SetFileUploadState("Choisisez un fichier a uploader")
+    },2000)
+   }  
+  }
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -183,8 +279,20 @@ const [moderateurs, setModerateurs] = useState(null);
         Bonjour , <span className=" text-rosee">Admin</span>{" "}
       </h1>
       {/* FILE UPLOAD */}
-      <div className=" mx-5 my-12 sm:mx-12 xl:mx-32 text-white bg-primary rounded-xl h-36 lg:h-48 p-10 lg:p-32 text-center font-body text-2xl xl:text-4xl font-bold">
-        file upload
+      <div className=' mx-5 my-12 sm:mx-12 xl:mx-32 text-white bg-primary rounded-xl   p-10 lg:p-32 text-center font-body text-xl xl:text-4xl font-bold'>
+          <div className="titeUpload text-6xl mb-10 ">file upload </div> 
+           
+
+        <form className='p-4 flex flex-col ' method="POST" action="http://127.0.0.1:8000/article/upload" encType='multipart/form-data'>
+          <input onChange={handleFileChange} className='m-auto     align-item ' type="file" name='fileUpload'  />
+ 
+          <button className='text-rosee  round-3 hover:bg-sky-700 w-32 p-2 m-auto mt-5' onClick={SubmitEvent} type='submit'>submit</button>
+        </form>
+        <div className="stateContainer border ">
+           <p className='   w-fit m-auto p-10  '>State : {FileUploadState}</p>
+        </div>
+        
+
       </div>
 
       {/* moderateurs list */}

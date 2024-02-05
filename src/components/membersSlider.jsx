@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
  import mehdi from '../assets/mehdi.jpeg'
  import wassim from '../assets/wassim.png'
  import nesrine from '../assets/NESRINE.jpg'
+ import riad from '../assets/riad.jpg'
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -44,7 +45,7 @@ export default function membersSlider() {
     linkedin: "https://www.linkedin.com/in/mehdi-mamouni-68a010211/"
  },
  {
-  img: mehdi ,
+  img: riad ,
   name: "YALA RIAD",
   description: "Etudiant 1CS G06,  développeur web Back-end ",
   facebook: "https://www.facebook.com/profile.php?id=100052880411339",
