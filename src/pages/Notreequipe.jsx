@@ -69,4 +69,6 @@ const Notreequipe = () => {
   );
 };
 
-export default Notreequipe;
+}
+
+export default Notreequipe
